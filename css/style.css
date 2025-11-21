@@ -236,6 +236,78 @@ tldr::before {
   margin-bottom: 0.75rem;
 }
 
+/* Table of Contents */
+.toc {
+  background: #f9f9f9;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 1.5rem;
+  margin: 2rem 0 3rem;
+}
+
+.toc::before {
+  content: "Table of Contents";
+  display: block;
+  font-family: var(--nav-font);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.toc a {
+  font-family: var(--nav-font);
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.toc a:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+/* Nested TOC items */
+.toc ul ul {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.toc ul ul li {
+  font-size: 0.95rem;
+}
+
+/* Header anchors */
+.header-anchor {
+  font-family: var(--nav-font);
+  font-weight: 500;
+  color: var(--border);
+  text-decoration: none;
+  margin-left: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+h2:hover .header-anchor,
+h3:hover .header-anchor {
+  opacity: 1;
+}
+
+.header-anchor:hover {
+  color: var(--link);
+}
+
 /* Audio Player */
 .audio-player {
   margin: 2rem 0;

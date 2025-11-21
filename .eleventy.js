@@ -1,7 +1,34 @@
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
+const markdownItTOC = require("markdown-it-toc-done-right");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(rssPlugin);
+
+  // Configure markdown with TOC support
+  const markdownLibrary = markdownIt({
+    html: true,
+    linkify: true,
+    typographer: true
+  })
+    .use(markdownItAnchor, {
+      permalink: markdownItAnchor.permalink.ariaHidden({
+        placement: 'after',
+        class: 'header-anchor',
+        symbol: '#',
+        ariaHidden: false
+      }),
+      level: [2, 3],
+      slugify: eleventyConfig.getFilter("slugify")
+    })
+    .use(markdownItTOC, {
+      containerClass: "toc",
+      listType: "ul",
+      level: [2, 3]
+    });
+
+  eleventyConfig.setLibrary("md", markdownLibrary);
 
   // Copy audio files and CSS to output
   eleventyConfig.addPassthroughCopy("audio");
