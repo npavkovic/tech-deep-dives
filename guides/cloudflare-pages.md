@@ -3,7 +3,7 @@
   "layout": "guide.njk",
   "title": "Cloudflare Pages: The Complete Technical Guide to Static Site Hosting Without Servers",
   "date": "2025-11-21",
-  "description": "To understand why this matters, imagine the traditional way of hosting a website. You rent a virtual machine (a server—essentially a computer in a data center) in, say, Ohio. When someone in Sydney, Australia visits your site, their request travels through thousands of miles of internet cables: Sydney → various internet routers → Ohio → back to Sydney. This journey takes time—often 500 to 2000 milliseconds (half a second to 2 seconds) just to establish the connection, before your server even starts processing the request.",
+  "description": "Traditional web hosting forces users across the globe to wait for data to travel from your single server—physics creates unavoidable delays that no optimization can fix. Cloudflare Pages pre-builds your site once and distributes it to 300+ locations worldwide, so every user gets instant responses from nearby servers without managing any infrastructure.",
   "templateEngineOverride": "md"
 }
 ---

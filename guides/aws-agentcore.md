@@ -3,7 +3,7 @@
   "layout": "guide.njk",
   "title": "AWS AgentCore: A Comprehensive Technical Explainer",
   "date": "2025-11-21",
-  "description": "Before AgentCore, organizations faced a massive infrastructure gap between AI agent prototypes and production deployments. When companies built proof-of-concept agents locally using open-source frameworks like LangChain or CrewAI, they immediately hit a wall of operational challenges:",
+  "description": "AWS built AgentCore because Lambda wasn't designed for AI agents that think for hours, not milliseconds. This managed platform finally closes the gap between proof-of-concept agents running on your laptop and production systems handling millions of enterprise workflows.",
   "templateEngineOverride": "md"
 }
 ---

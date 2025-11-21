@@ -3,7 +3,7 @@
   "layout": "guide.njk",
   "title": "Apache Kafka: A Comprehensive Technical Explainer",
   "date": "2025-11-21",
-  "description": "Think of it less as a traditional message queue and more as a **permanent record keeper** that's obsessed with throughput. Instead of deleting messages after consumption, Kafka keeps them for a configurable period, allowing multiple consumers to read the same data independently at their own pace.",
+  "description": "LinkedIn's social network was drowning in point-to-point integrations until they built Kafka—a distributed log that treats events as permanent history, not ephemeral messages. What emerged became the backbone of modern event streaming, powering everything from Netflix's recommendations to PayPal's trillion daily transactions.",
   "templateEngineOverride": "md"
 }
 ---

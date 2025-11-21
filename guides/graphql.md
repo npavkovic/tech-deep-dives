@@ -3,7 +3,7 @@
   "layout": "guide.njk",
   "title": "GraphQL: A Comprehensive Technical Guide to Modern API Architecture",
   "date": "2025-11-21",
-  "description": "To understand why GraphQL exists, it helps to understand the constraints it was designed to solve. Before GraphQL's public release in 2015, Facebook had been using it internally since 2012 to power their mobile applications.[4] The fundamental problem they faced—and that the broader industry faces—stems from how REST APIs handle data retrieval.",
+  "description": "REST APIs force you to accept whatever data the server decides to send—too much causes wasted bandwidth, too little requires multiple slow requests. GraphQL inverts this by letting clients request exactly the data they need in one query, reducing mobile app load times from 4-5 seconds to under 1 second.",
   "templateEngineOverride": "md"
 }
 ---

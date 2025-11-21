@@ -3,7 +3,7 @@
   "layout": "guide.njk",
   "title": "OpenTelemetry: A Comprehensive Technical Explainer",
   "date": "2025-11-21",
-  "description": "In simpler terms: It's a universal translator for observability. Instead of being locked into one vendor's monitoring tools, OpenTelemetry lets you instrument your code once and send that data anywhere—Datadog, New Relic, Grafana, Prometheus, or your own custom backend.",
+  "description": "Before OpenTelemetry, switching observability vendors meant rewriting all your instrumentation code. OpenTelemetry became the universal translator—instrument once with open standards, send telemetry data anywhere, never get locked into proprietary agents again.",
   "templateEngineOverride": "md"
 }
 ---

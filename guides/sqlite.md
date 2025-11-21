@@ -3,7 +3,7 @@
   "layout": "guide.njk",
   "title": "SQLite: The Complete Technical Guide to the World's Most Deployed Database",
   "date": "2025-11-21",
-  "description": "SQLite is a **complete, self-contained relational database management system** (a database that organizes data into tables with rows and columns, queryable with SQL) **that operates as a single file on your device with no separate server process required**. This makes it the most deployed database engine in the world with over one trillion active instances.",
+  "description": "While enterprise databases demanded servers and administrators, SQLite fit an entire ACID-compliant database into a single file. One trillion deployments later, it's in your phone, your browser, and probably your toaster.",
   "templateEngineOverride": "md"
 }
 ---

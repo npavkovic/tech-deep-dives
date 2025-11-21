@@ -3,7 +3,7 @@
   "layout": "guide.njk",
   "title": "Elasticsearch: Beyond LIKE Queries",
   "date": "2025-11-21",
-  "description": "Elasticsearch is a distributed, open-source search and analytics engine built on Apache Lucene that enables lightning-fast full-text search and real-time analytics across massive datasets by using inverted indices to map terms to documents, making it fundamentally different from traditional database search and solving the scalability and accuracy problems that plague SQL LIKE queries and basic database indexing strategies. In practice, this means you can search billions of documents in milliseconds, find typos without defining them upfront, and discover patterns in unstructured data that would require prohibitive compute resources in relational databases—but at the cost of accepting eventual consistency and embracing a specialized search-oriented architecture that lives alongside your traditional database rather than replacing it.",
+  "description": "SQL's LIKE queries scan tables row-by-row, turning search into a scaling nightmare that crumbles past a few million records. Elasticsearch flips the problem on its head with inverted indices—mapping words to documents instead of scanning documents for words—making billion-document searches complete in milliseconds while handling typos and relevance scoring that databases can't touch.",
   "templateEngineOverride": "md"
 }
 ---

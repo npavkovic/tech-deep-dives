@@ -3,7 +3,7 @@
   "layout": "guide.njk",
   "title": "LangFuse: A Comprehensive Technical Explainer for Engineers",
   "date": "2025-11-21",
-  "description": "Before LangFuse existed, building production LLM applications was fundamentally different from building traditional software. Here's why:",
+  "description": "LangFuse emerged when teams realized that traditional observability tools couldn't debug non-deterministic AI systems. It captures every LLM execution detail—prompts, responses, costs, timing—transforming opaque AI workflows into inspectable, improvable systems.",
   "templateEngineOverride": "md"
 }
 ---
