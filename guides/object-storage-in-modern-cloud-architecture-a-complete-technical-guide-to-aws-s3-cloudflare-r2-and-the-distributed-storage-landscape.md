@@ -3,6 +3,7 @@ layout: guide.njk
 title: "Object Storage in Modern Cloud Architecture: A Complete Technical Guide to AWS S3, Cloudflare R2, and the Distributed Storage Landscape"
 date: 2025-11-21
 description: "Object storage has fundamentally reshaped how organizations manage unstructured data at scale by replacing hierarchical file systems with a flat namespace architecture where data is stored as self-contained objects with metadata, uniquely identified by keys rather than file paths. This comprehensive guide explores the architectural principles, practical implementations, cost models, and decision frameworks for choosing between leading object storage solutions, particularly examining AWS S3's dominant market position against Cloudflare R2's disruptive zero-egress pricing model and how these competing approaches reflect fundamentally different philosophies about cloud economics, vendor lock-in, and data portability."
+templateEngineOverride: md
 ---
 
 # Object Storage in Modern Cloud Architecture: A Complete Technical Guide to AWS S3, Cloudflare R2, and the Distributed Storage Landscape

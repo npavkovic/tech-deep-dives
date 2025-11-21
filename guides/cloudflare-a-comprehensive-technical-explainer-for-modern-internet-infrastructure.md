@@ -3,6 +3,7 @@ layout: guide.njk
 title: "Cloudflare: A Comprehensive Technical Explainer for Modern Internet Infrastructure"
 date: 2025-11-21
 description: "To understand Cloudflare properly, we must first recognize the problem it solves. The internet was not originally designed for the scale and performance demands of modern applications. When you operate a website or service from a single data center—say, in Columbus, Ohio—a user accessing your service from Sydney, Australia faces what physicists call \"the speed of light problem.\" The data packets traveling between Sydney and Ohio must traverse thousands of miles of fiber optic cables, routers, and network equipment. Even at the theoretical maximum speed of light through fiber (roughly 200,000 kilometers per second), this geographic distance creates unavoidable latency. Users experience that latency as slow page loads, increased time-to-first-byte (TTFB—the time before your browser receives the first byte of data from a server), and degraded application responsiveness."
+templateEngineOverride: md
 ---
 
 # Cloudflare: A Comprehensive Technical Explainer for Modern Internet Infrastructure

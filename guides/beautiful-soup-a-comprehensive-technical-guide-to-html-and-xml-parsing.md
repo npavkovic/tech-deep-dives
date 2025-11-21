@@ -3,6 +3,7 @@ layout: guide.njk
 title: "Beautiful Soup: A Comprehensive Technical Guide to HTML and XML Parsing"
 date: 2025-11-21
 description: "Beautiful Soup is fundamentally a **parse tree library**. When you give it an HTML or XML document, it reads through the markup and builds an in-memory object tree that mirrors the document's structure. Each element becomes a Python object with methods you can call to navigate, search, and extract data."
+templateEngineOverride: md
 ---
 
 # Beautiful Soup: A Comprehensive Technical Guide to HTML and XML Parsing

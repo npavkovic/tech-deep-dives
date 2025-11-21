@@ -3,6 +3,7 @@ layout: guide.njk
 title: "LangFuse: A Comprehensive Technical Explainer for Engineers"
 date: 2025-11-21
 description: "Before LangFuse existed, building production LLM applications was fundamentally different from building traditional software. Here's why:"
+templateEngineOverride: md
 ---
 
 # LangFuse: A Comprehensive Technical Explainer for Engineers

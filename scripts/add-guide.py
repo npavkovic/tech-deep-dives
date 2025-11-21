@@ -87,6 +87,8 @@ def generate_frontmatter(title, date, audio_filename, description):
         # Escape quotes in description
         description = description.replace('"', '\\"')
         frontmatter += f'description: "{description}"\n'
+    # Disable Liquid processing to prevent {{ }} in code blocks from being interpreted
+    frontmatter += "templateEngineOverride: md\n"
     frontmatter += "---\n"
     return frontmatter
 

@@ -3,6 +3,7 @@ layout: guide.njk
 title: "GraphQL: A Comprehensive Technical Guide to Modern API Architecture"
 date: 2025-11-21
 description: "To understand why GraphQL exists, it helps to understand the constraints it was designed to solve. Before GraphQL's public release in 2015, Facebook had been using it internally since 2012 to power their mobile applications.[4] The fundamental problem they faced—and that the broader industry faces—stems from how REST APIs handle data retrieval."
+templateEngineOverride: md
 ---
 
 # GraphQL: A Comprehensive Technical Guide to Modern API Architecture

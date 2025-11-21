@@ -3,6 +3,7 @@ layout: guide.njk
 title: "Localhost to the World: Cloudflare Tunnels for Exposing Local Services"
 date: 2025-11-21
 description: "Cloudflare Tunnel is a reverse proxy service that creates an outbound-only encrypted connection from your infrastructure to Cloudflare's global edge network, eliminating the need to expose your servers directly to the internet or manage complex firewall rules while providing automatic DDoS protection, WAF capabilities, and zero-trust access controls. This guide walks through every meaningful aspect of how this service works, why teams choose it, how it compares to alternatives, and what you need to know to use it effectively in production."
+templateEngineOverride: md
 ---
 
 # Localhost to the World: Cloudflare Tunnels for Exposing Local Services
