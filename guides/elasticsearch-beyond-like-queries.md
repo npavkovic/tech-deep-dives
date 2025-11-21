@@ -10,6 +10,12 @@
 
 # Elasticsearch: Beyond LIKE Queries
 
+<deck>
+SQL's LIKE queries scan tables row-by-row, turning search into a scaling nightmare that crumbles past a few million records. Elasticsearch flips the problem on its head with inverted indices—mapping words to documents instead of scanning documents for words—making billion-document searches complete in milliseconds while handling typos and relevance scoring that databases can't touch.
+</deck>
+
+${toc}
+
 **Last Updated**: 2025-11-20
 
 ---
@@ -22,7 +28,9 @@ Elasticsearch is a distributed, open-source search and analytics engine built on
 
 ## The Problem Elasticsearch Solves: From Database Search Desperation to Scalable Search
 
-**TLDR**: Traditional SQL databases struggle with full-text search at scale. SQL's `LIKE '%search%'` queries scan every row character-by-character, becoming painfully slow beyond a few million records. They also can't handle typos, relevance ranking, or fuzzy matching without complex application logic. Elasticsearch solves this by using specialized inverted indices that make search queries lightning-fast and intelligent.
+<tldr>
+Traditional SQL databases struggle with full-text search at scale. SQL's `LIKE '%search%'` queries scan every row character-by-character, becoming painfully slow beyond a few million records. They also can't handle typos, relevance ranking, or fuzzy matching without complex application logic. Elasticsearch solves this by using specialized inverted indices that make search queries lightning-fast and intelligent.
+</tldr>
 
 To understand why Elasticsearch exists, picture yourself building an e-commerce platform or content management system five or ten years ago. Your product catalog or article collection lives in PostgreSQL or MySQL, safely stored in normalized tables with proper schemas and ACID guarantees (ACID means Atomicity, Consistency, Isolation, Durability—database transactions that either fully succeed or fully fail, keeping data consistent). Then a stakeholder asks: "Can we search products by description?" You think this is simple. You write a query using LIKE: `SELECT * FROM products WHERE description LIKE '%smartphone%'`. It works on your laptop with 10,000 products. You ship it to production with 50 million products, and suddenly your database is getting hammered. The query scans every single row, character by character, looking for that substring. On your laptop this took 50 milliseconds. In production with concurrent traffic, it takes 5 seconds or worse, and your database can't handle the load.
 
@@ -36,7 +44,9 @@ Elasticsearch enters the picture by doing one thing very well: finding the right
 
 ## Where Elasticsearch Fits: The Polyglot Architecture
 
-**TLDR**: Elasticsearch doesn't replace your database—it complements it. Your primary database (PostgreSQL, MongoDB, etc.) remains the source of truth where transactions happen. Elasticsearch acts as a specialized search index that you keep synchronized with your database, handling all search queries while your database handles writes and transactional operations.
+<tldr>
+Elasticsearch doesn't replace your database—it complements it. Your primary database (PostgreSQL, MongoDB, etc.) remains the source of truth where transactions happen. Elasticsearch acts as a specialized search index that you keep synchronized with your database, handling all search queries while your database handles writes and transactional operations.
+</tldr>
 
 Elasticsearch almost never stands alone in real systems. Instead, it's part of a **polyglot persistence** architecture (polyglot persistence means using different database technologies for different needs—SQL for transactions, Elasticsearch for search, Redis for caching, etc.). Your primary database (PostgreSQL, MongoDB, DynamoDB) remains the **system of record**—the authoritative source of truth where transactions happen and consistency is guaranteed. Elasticsearch becomes a **secondary, specialized index** that you keep in sync with your primary database specifically to serve search queries.
 
@@ -48,7 +58,9 @@ Here's the typical data flow: when a user or system updates data in your primary
 
 ## Real-World Usage: Where Elasticsearch Excels and Where It Doesn't
 
-**TLDR**: Elasticsearch powers search at Netflix, eBay, and Walmart. It excels at full-text search with typo tolerance, log analytics, and aggregating semi-structured data at scale. It's poor as a primary database, handling frequent updates, or providing strong consistency guarantees. Use it for search and analytics, not as your system of record.
+<tldr>
+Elasticsearch powers search at Netflix, eBay, and Walmart. It excels at full-text search with typo tolerance, log analytics, and aggregating semi-structured data at scale. It's poor as a primary database, handling frequent updates, or providing strong consistency guarantees. Use it for search and analytics, not as your system of record.
+</tldr>
 
 Elasticsearch powers search and analytics at Netflix, eBay, and Walmart, handling their most demanding search and observability workloads. Netflix uses it for real-time log analysis to monitor system performance and identify issues affecting customer experience. eBay uses it to power the search functionality that billions of users interact with daily. Walmart uses it to analyze customer purchasing patterns and track store performance metrics in real-time.
 
@@ -84,7 +96,9 @@ The mistake teams commonly make is trying to use Elasticsearch as a primary data
 
 ## Database Search Limitations & Full-Text Search Architecture
 
-**TLDR**: Elasticsearch fundamentally differs from database search through three innovations: inverted indices (mapping words to documents instead of documents to words), text analysis (stemming, lowercasing, synonym expansion), and relevance scoring (ranking results by how well they match). These make Elasticsearch 100x-1000x faster for full-text search while enabling typo tolerance and intelligent ranking that databases can't provide.
+<tldr>
+Elasticsearch fundamentally differs from database search through three innovations: inverted indices (mapping words to documents instead of documents to words), text analysis (stemming, lowercasing, synonym expansion), and relevance scoring (ranking results by how well they match). These make Elasticsearch 100x-1000x faster for full-text search while enabling typo tolerance and intelligent ranking that databases can't provide.
+</tldr>
 
 To truly understand why Elasticsearch exists and why it's worth the complexity, you need to grasp what "full-text search" means and how it differs from database searching. This is where the architecture diverges in ways that matter enormously.
 
@@ -189,7 +203,9 @@ The difference compounds when you add typo tolerance, synonym expansion, and rel
 
 ## Comparisons with Alternatives: When Elasticsearch is Right (and When It's Not)
 
-**TLDR**: Alternatives include Apache Solr (similar power, more complex), PostgreSQL full-text search (good for <10M documents), Algolia (fully managed SaaS), and Typesense/Meilisearch (simpler but less powerful). Choose Elasticsearch for powerful full-text search at scale with maximum flexibility. Choose PostgreSQL for small datasets. Choose Algolia/Azure for fully managed solutions. Choose Typesense/Meilisearch for simplicity.
+<tldr>
+Alternatives include Apache Solr (similar power, more complex), PostgreSQL full-text search (good for <10M documents), Algolia (fully managed SaaS), and Typesense/Meilisearch (simpler but less powerful). Choose Elasticsearch for powerful full-text search at scale with maximum flexibility. Choose PostgreSQL for small datasets. Choose Algolia/Azure for fully managed solutions. Choose Typesense/Meilisearch for simplicity.
+</tldr>
 
 The search landscape has expanded significantly. Understanding where Elasticsearch sits relative to other options is crucial for architectural decisions.
 
@@ -245,7 +261,9 @@ Azure Cognitive Search is Microsoft's managed search offering, fully integrated 
 
 ## The Architecture: How Elasticsearch Achieves Scale
 
-**TLDR**: Elasticsearch distributes data across indices (like database tables), shards (subdivisions for parallel processing), and replicas (copies for redundancy and performance). Nodes are individual servers that work together in a cluster. This distributed architecture scales to petabytes across thousands of nodes but trades single-machine consistency for eventual consistency.
+<tldr>
+Elasticsearch distributes data across indices (like database tables), shards (subdivisions for parallel processing), and replicas (copies for redundancy and performance). Nodes are individual servers that work together in a cluster. This distributed architecture scales to petabytes across thousands of nodes but trades single-machine consistency for eventual consistency.
+</tldr>
 
 Understanding Elasticsearch's architecture requires grasping a few key concepts:
 
@@ -285,7 +303,9 @@ This distributed architecture means Elasticsearch can handle enormous data volum
 
 ## Core Concepts and Building Blocks in Plain English
 
-**TLDR**: Elasticsearch stores documents (JSON objects), organizes them in indices, defines their structure with mappings (schemas), and searches them using Query DSL (JSON-based query language). Understanding text vs. keyword fields, queries vs. filters, and aggregations is essential for effective usage.
+<tldr>
+Elasticsearch stores documents (JSON objects), organizes them in indices, defines their structure with mappings (schemas), and searches them using Query DSL (JSON-based query language). Understanding text vs. keyword fields, queries vs. filters, and aggregations is essential for effective usage.
+</tldr>
 
 ### Documents and JSON
 
@@ -370,7 +390,9 @@ This is how Elasticsearch powers analytics dashboards showing real-time metrics.
 
 ## Integration Patterns: Making Elasticsearch Part of Your System
 
-**TLDR**: Three main patterns for syncing data: dual writes (simple but risky—application writes to both database and Elasticsearch), change data capture (reliable—CDC tools stream database changes to Elasticsearch), and batch indexing (for non-real-time needs). CDC is the recommended production pattern for most use cases.
+<tldr>
+Three main patterns for syncing data: dual writes (simple but risky—application writes to both database and Elasticsearch), change data capture (reliable—CDC tools stream database changes to Elasticsearch), and batch indexing (for non-real-time needs). CDC is the recommended production pattern for most use cases.
+</tldr>
 
 ### The Dual-Write Pattern (Simple but Risky)
 
@@ -439,7 +461,9 @@ The client libraries abstract away HTTP details, letting you focus on building s
 
 ## Practical Considerations: Deployment and Operations
 
-**TLDR**: Elasticsearch can run self-managed (you handle everything), on Elastic Cloud (managed by Elastic), or AWS OpenSearch (managed by AWS). Costs range from $500-2000/month for modest workloads to $10,000+/month for large clusters. Operational complexity is significant—heap sizing, shard allocation, garbage collection tuning, monitoring, and backups all require expertise.
+<tldr>
+Elasticsearch can run self-managed (you handle everything), on Elastic Cloud (managed by Elastic), or AWS OpenSearch (managed by AWS). Costs range from $500-2000/month for modest workloads to $10,000+/month for large clusters. Operational complexity is significant—heap sizing, shard allocation, garbage collection tuning, monitoring, and backups all require expertise.
+</tldr>
 
 ### Deployment Models
 
@@ -514,7 +538,9 @@ For infrastructure costs:
 
 ## Recent Advances: Where Elasticsearch is Heading
 
-**TLDR**: Elasticsearch is evolving beyond keyword search with vector search for semantic/AI-powered search, better binary quantization (BBQ) for efficient vector storage, semantic_text fields for automatic embedding management, ES|QL as a simpler query language, and a return to open source licensing (AGPLv3). These changes position Elasticsearch for the AI era while addressing usability concerns.
+<tldr>
+Elasticsearch is evolving beyond keyword search with vector search for semantic/AI-powered search, better binary quantization (BBQ) for efficient vector storage, semantic_text fields for automatic embedding management, ES|QL as a simpler query language, and a return to open source licensing (AGPLv3). These changes position Elasticsearch for the AI era while addressing usability concerns.
+</tldr>
 
 ### Vector Search and AI Integration
 
@@ -571,7 +597,9 @@ In September 2024, Elastic added AGPLv3 as a license option for the free portion
 
 ## Free Tier Experiments: Hands-On Learning
 
-**TLDR**: Get hands-on in under an hour with either Docker locally or Elastic Cloud free trial. Start by indexing sample data, trying basic searches, exploring fuzzy matching and relevance scoring, and experimenting with aggregations. This practical experience makes the concepts concrete.
+<tldr>
+Get hands-on in under an hour with either Docker locally or Elastic Cloud free trial. Start by indexing sample data, trying basic searches, exploring fuzzy matching and relevance scoring, and experimenting with aggregations. This practical experience makes the concepts concrete.
+</tldr>
 
 ### Experiment 1: Local Docker Setup (30 minutes)
 
@@ -738,7 +766,9 @@ After completing these experiments, you'll have practical understanding of:
 
 ## Common Pitfalls and Misconceptions
 
-**TLDR**: Common mistakes include treating Elasticsearch as a primary database (it's not), letting it infer mappings (define them explicitly), over-sharding (creates overhead), ignoring monitoring (clusters silently degrade), misunderstanding its role (it doesn't query your database, it maintains its own copy), expensive updates (updates rewrite documents), and forgetting eventual consistency (writes aren't instantly visible across all nodes).
+<tldr>
+Common mistakes include treating Elasticsearch as a primary database (it's not), letting it infer mappings (define them explicitly), over-sharding (creates overhead), ignoring monitoring (clusters silently degrade), misunderstanding its role (it doesn't query your database, it maintains its own copy), expensive updates (updates rewrite documents), and forgetting eventual consistency (writes aren't instantly visible across all nodes).
+</tldr>
 
 ### Misconception 1: "Elasticsearch Will Store All My Data Forever"
 
