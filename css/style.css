@@ -197,6 +197,45 @@ a:hover {
   margin-bottom: 1.5rem;
 }
 
+/* Deck - Article intro/lede */
+deck {
+  display: block;
+  font-family: var(--article-font);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 2rem 0 2.5rem;
+  padding-left: 1.5rem;
+  border-left: 4px solid var(--link);
+  font-style: italic;
+}
+
+/* TLDR - Callout boxes */
+tldr {
+  display: block;
+  font-family: var(--article-font);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  background: #f9f9f9;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--link);
+  padding: 1.25rem 1.5rem;
+  border-radius: 5px;
+  margin: 2rem 0;
+}
+
+tldr::before {
+  content: "TLDR";
+  display: block;
+  font-family: var(--nav-font);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--link);
+  margin-bottom: 0.75rem;
+}
+
 /* Audio Player */
 .audio-player {
   margin: 2rem 0;

@@ -1,9 +1,11 @@
----
-layout: guide.njk
-title: "OpenTelemetry: A Comprehensive Technical Explainer"
-date: 2025-11-21
-description: "In simpler terms: It's a universal translator for observability. Instead of being locked into one vendor's monitoring tools, OpenTelemetry lets you instrument your code once and send that data anywhere—Datadog, New Relic, Grafana, Prometheus, or your own custom backend."
-templateEngineOverride: md
+---json
+{
+  "layout": "guide.njk",
+  "title": "OpenTelemetry: A Comprehensive Technical Explainer",
+  "date": "2025-11-21",
+  "description": "In simpler terms: It's a universal translator for observability. Instead of being locked into one vendor's monitoring tools, OpenTelemetry lets you instrument your code once and send that data anywhere—Datadog, New Relic, Grafana, Prometheus, or your own custom backend.",
+  "templateEngineOverride": "md"
+}
 ---
 
 # OpenTelemetry: A Comprehensive Technical Explainer

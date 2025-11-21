@@ -1,9 +1,11 @@
----
-layout: guide.njk
-title: "Apache Kafka: A Comprehensive Technical Explainer"
-date: 2025-11-21
-description: "Think of it less as a traditional message queue and more as a **permanent record keeper** that's obsessed with throughput. Instead of deleting messages after consumption, Kafka keeps them for a configurable period, allowing multiple consumers to read the same data independently at their own pace."
-templateEngineOverride: md
+---json
+{
+  "layout": "guide.njk",
+  "title": "Apache Kafka: A Comprehensive Technical Explainer",
+  "date": "2025-11-21",
+  "description": "Think of it less as a traditional message queue and more as a **permanent record keeper** that's obsessed with throughput. Instead of deleting messages after consumption, Kafka keeps them for a configurable period, allowing multiple consumers to read the same data independently at their own pace.",
+  "templateEngineOverride": "md"
+}
 ---
 
 # Apache Kafka: A Comprehensive Technical Explainer

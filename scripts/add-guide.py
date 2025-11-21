@@ -10,6 +10,7 @@ Usage:
 """
 
 import argparse
+import json
 import os
 import re
 import shutil
@@ -25,10 +26,24 @@ def extract_title_from_markdown(content):
     return None
 
 
+def extract_deck(content):
+    """Extract content from <deck> tags."""
+    match = re.search(r'<deck>(.*?)</deck>', content, re.DOTALL)
+    if match:
+        # Clean up the deck text - remove extra whitespace, newlines
+        deck_text = match.group(1).strip()
+        # Replace multiple spaces/newlines with single space
+        deck_text = re.sub(r'\s+', ' ', deck_text)
+        return deck_text
+    return None
+
+
 def extract_description(content):
     """Extract a description from the content (first paragraph after title)."""
     # Remove frontmatter if it exists
-    content = re.sub(r'^---\n.*?\n---\n', '', content, flags=re.DOTALL)
+    content = re.sub(r'^---(?:json)?\n.*?\n---\n', '', content, flags=re.DOTALL)
+    # Remove deck tags so we don't extract them as description
+    content = re.sub(r'<deck>.*?</deck>', '', content, flags=re.DOTALL)
 
     # Find first H1
     lines = content.split('\n')
@@ -76,20 +91,23 @@ def extract_description(content):
 
 
 def generate_frontmatter(title, date, audio_filename, description):
-    """Generate YAML frontmatter."""
-    frontmatter = "---\n"
-    frontmatter += "layout: guide.njk\n"
-    frontmatter += f'title: "{title}"\n'
-    frontmatter += f"date: {date}\n"
+    """Generate JSON frontmatter."""
+    data = {
+        "layout": "guide.njk",
+        "title": title,
+        "date": date,
+        "templateEngineOverride": "md"
+    }
+
     if audio_filename:
-        frontmatter += f"audio: {audio_filename}\n"
+        data["audio"] = audio_filename
+
     if description:
-        # Escape quotes in description
-        description = description.replace('"', '\\"')
-        frontmatter += f'description: "{description}"\n'
-    # Disable Liquid processing to prevent {{ }} in code blocks from being interpreted
-    frontmatter += "templateEngineOverride: md\n"
-    frontmatter += "---\n"
+        data["description"] = description
+
+    frontmatter = "---json\n"
+    frontmatter += json.dumps(data, indent=2, ensure_ascii=False)
+    frontmatter += "\n---\n"
     return frontmatter
 
 
@@ -118,8 +136,8 @@ def main():
         with open(md_path, 'r', encoding='latin-1') as f:
             content = f.read()
 
-    # Remove existing frontmatter if present
-    content = re.sub(r'^---\n.*?\n---\n', '', content, flags=re.DOTALL)
+    # Remove existing frontmatter if present (both YAML and JSON formats)
+    content = re.sub(r'^---(?:json)?\n.*?\n---\n', '', content, flags=re.DOTALL)
 
     # Extract/set metadata
     title = args.title or extract_title_from_markdown(content)
@@ -127,7 +145,8 @@ def main():
         print("Error: Could not extract title. Use --title to specify manually.")
         return 1
 
-    description = args.description or extract_description(content)
+    # Try to extract deck first, fall back to auto-generated description
+    description = args.description or extract_deck(content) or extract_description(content)
 
     date = args.date or datetime.now().strftime('%Y-%m-%d')
 

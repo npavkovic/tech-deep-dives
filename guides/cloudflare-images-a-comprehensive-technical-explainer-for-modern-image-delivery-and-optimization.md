@@ -1,9 +1,11 @@
----
-layout: guide.njk
-title: "Cloudflare Images: A Comprehensive Technical Explainer for Modern Image Delivery and Optimization"
-date: 2025-11-21
-description: "Before understanding Cloudflare Images, we must first understand why image optimization matters at all. Images represent the largest portion of data transferred on modern websites, frequently accounting for 50-80% of total page weight depending on the site's purpose.[29] A typical e-commerce product page might load a 2.5MB hero image that displays at 800×600 pixels on desktop but needs to be much smaller on mobile devices. Without optimization, a smartphone visitor with a 4G connection downloads the same 2.5MB file as a desktop user with fiber internet, wasting bandwidth (the amount of data transferred), consuming their data plan, and dramatically slowing page load times."
-templateEngineOverride: md
+---json
+{
+  "layout": "guide.njk",
+  "title": "Cloudflare Images: A Comprehensive Technical Explainer for Modern Image Delivery and Optimization",
+  "date": "2025-11-21",
+  "description": "Before understanding Cloudflare Images, we must first understand why image optimization matters at all. Images represent the largest portion of data transferred on modern websites, frequently accounting for 50-80% of total page weight depending on the site's purpose.[29] A typical e-commerce product page might load a 2.5MB hero image that displays at 800×600 pixels on desktop but needs to be much smaller on mobile devices. Without optimization, a smartphone visitor with a 4G connection downloads the same 2.5MB file as a desktop user with fiber internet, wasting bandwidth (the amount of data transferred), consuming their data plan, and dramatically slowing page load times.",
+  "templateEngineOverride": "md"
+}
 ---
 
 # Cloudflare Images: A Comprehensive Technical Explainer for Modern Image Delivery and Optimization

@@ -1,9 +1,11 @@
----
-layout: guide.njk
-title: "Redis for Application Caching: A Technical Deep Dive into Modern In-Memory Performance"
-date: 2025-11-21
-description: "Redis is an in-memory data structure store that accelerates applications by caching frequently-accessed data, reducing response latencies from hundreds of milliseconds to sub-millisecond timescales while simultaneously reducing database load and infrastructure costs. Unlike simple key-value caches, Redis provides sophisticated data structures and persistence options that enable developers to build complex, high-performance systems without the operational overhead of multiple specialized tools. This comprehensive guide explores Redis through an engineering lens, examining both the technical architecture and the economic realities of modern application caching."
-templateEngineOverride: md
+---json
+{
+  "layout": "guide.njk",
+  "title": "Redis for Application Caching: A Technical Deep Dive into Modern In-Memory Performance",
+  "date": "2025-11-21",
+  "description": "Redis is an in-memory data structure store that accelerates applications by caching frequently-accessed data, reducing response latencies from hundreds of milliseconds to sub-millisecond timescales while simultaneously reducing database load and infrastructure costs. Unlike simple key-value caches, Redis provides sophisticated data structures and persistence options that enable developers to build complex, high-performance systems without the operational overhead of multiple specialized tools. This comprehensive guide explores Redis through an engineering lens, examining both the technical architecture and the economic realities of modern application caching.",
+  "templateEngineOverride": "md"
+}
 ---
 
 # Redis for Application Caching: A Technical Deep Dive into Modern In-Memory Performance

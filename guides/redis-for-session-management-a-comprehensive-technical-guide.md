@@ -1,9 +1,11 @@
----
-layout: guide.njk
-title: "Redis for Session Management: A Comprehensive Technical Guide"
-date: 2025-11-21
-description: "In a single sentence, **Redis for session management is an in-memory data store that maintains user session state across distributed servers, enabling seamless user experiences even when requests are routed to different application instances**. Before Redis became ubiquitous, web applications faced a fundamental architectural problem: how to remember who a user was across multiple requests and multiple servers without forcing every single operation to query a central database. This guide explores how Redis solves that problem at scale, from the first distributed web request to handling millions of concurrent sessions across planet-spanning infrastructure."
-templateEngineOverride: md
+---json
+{
+  "layout": "guide.njk",
+  "title": "Redis for Session Management: A Comprehensive Technical Guide",
+  "date": "2025-11-21",
+  "description": "In a single sentence, **Redis for session management is an in-memory data store that maintains user session state across distributed servers, enabling seamless user experiences even when requests are routed to different application instances**. Before Redis became ubiquitous, web applications faced a fundamental architectural problem: how to remember who a user was across multiple requests and multiple servers without forcing every single operation to query a central database. This guide explores how Redis solves that problem at scale, from the first distributed web request to handling millions of concurrent sessions across planet-spanning infrastructure.",
+  "templateEngineOverride": "md"
+}
 ---
 
 # Redis for Session Management: A Comprehensive Technical Guide

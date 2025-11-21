@@ -1,9 +1,11 @@
----
-layout: guide.njk
-title: "New Relic & Observability: The Comprehensive Technical Guide"
-date: 2025-11-21
-description: "1. [The \"What & Why\" Foundation](#1-the-what--why-foundation) 2. [Real-World Usage & Context](#2-real-world-usage--context) 3. [Comparisons & Alternatives](#3-comparisons--alternatives) 4. [Quick Reference](#4-quick-reference) 5. [Core Concepts Unpacked](#5-core-concepts-unpacked) 6. [How It Actually Works](#6-how-it-actually-works) 7. [Integration Patterns](#7-integration-patterns) 8. [Practical Considerations](#8-practical-considerations) 9. [Recent Advances & Trajectory](#9-recent-advances--trajectory) 10. [Free Tier Experiments](#10-free-tier-experiments) 11. [Gotchas, Misconceptions & War Stories](#11-gotchas-misconceptions--war-stories) 12. [How to Learn More](#12-how-to-learn-more) 13. [Glossary](#13-glossary)"
-templateEngineOverride: md
+---json
+{
+  "layout": "guide.njk",
+  "title": "New Relic & Observability: The Comprehensive Technical Guide",
+  "date": "2025-11-21",
+  "description": "1. [The \"What & Why\" Foundation](#1-the-what--why-foundation) 2. [Real-World Usage & Context](#2-real-world-usage--context) 3. [Comparisons & Alternatives](#3-comparisons--alternatives) 4. [Quick Reference](#4-quick-reference) 5. [Core Concepts Unpacked](#5-core-concepts-unpacked) 6. [How It Actually Works](#6-how-it-actually-works) 7. [Integration Patterns](#7-integration-patterns) 8. [Practical Considerations](#8-practical-considerations) 9. [Recent Advances & Trajectory](#9-recent-advances--trajectory) 10. [Free Tier Experiments](#10-free-tier-experiments) 11. [Gotchas, Misconceptions & War Stories](#11-gotchas-misconceptions--war-stories) 12. [How to Learn More](#12-how-to-learn-more) 13. [Glossary](#13-glossary)",
+  "templateEngineOverride": "md"
+}
 ---
 
 # New Relic & Observability: The Comprehensive Technical Guide

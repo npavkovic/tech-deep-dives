@@ -1,9 +1,11 @@
----
-layout: guide.njk
-title: "Redis: The Complete Technical Explainer Guide for High-Performance In-Memory Data Systems"
-date: 2025-11-21
-description: "Before Redis, the computing world operated under a rigid assumption: you could have either speed or durability, but not both. Traditional databases like MySQL and PostgreSQL optimized for durability by writing every transaction to disk before acknowledging success. This safety came at a cost—disk operations take milliseconds while RAM operations take nanoseconds, creating a fundamental performance ceiling. When the internet transformed from static websites to real-time applications, this tradeoff became unbearable. Developers needed to cache data in application memory to achieve fast response times, but application-level caching was fragile, didn't persist across server restarts, and couldn't be shared across multiple servers."
-templateEngineOverride: md
+---json
+{
+  "layout": "guide.njk",
+  "title": "Redis: The Complete Technical Explainer Guide for High-Performance In-Memory Data Systems",
+  "date": "2025-11-21",
+  "description": "Before Redis, the computing world operated under a rigid assumption: you could have either speed or durability, but not both. Traditional databases like MySQL and PostgreSQL optimized for durability by writing every transaction to disk before acknowledging success. This safety came at a cost—disk operations take milliseconds while RAM operations take nanoseconds, creating a fundamental performance ceiling. When the internet transformed from static websites to real-time applications, this tradeoff became unbearable. Developers needed to cache data in application memory to achieve fast response times, but application-level caching was fragile, didn't persist across server restarts, and couldn't be shared across multiple servers.",
+  "templateEngineOverride": "md"
+}
 ---
 
 # Redis: The Complete Technical Explainer Guide for High-Performance In-Memory Data Systems

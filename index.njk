@@ -10,8 +10,8 @@ title: Home
       <a href="{{ guide.url }}">{{ guide.data.title }}</a>
     </h2>
     <div class="guide-meta">
-      <time datetime="{{ guide.date | dateToRfc3339 }}">
-        {{ guide.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
+      <time datetime="{{ guide.date | isoDate }}">
+        {{ guide.date | readableDate }}
       </time>
     </div>
     {% if guide.data.description %}
