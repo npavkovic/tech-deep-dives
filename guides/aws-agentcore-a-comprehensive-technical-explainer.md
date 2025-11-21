@@ -10,9 +10,13 @@
 
 # AWS AgentCore: A Comprehensive Technical Explainer
 
+<deck>AWS built AgentCore because Lambda wasn't designed for AI agents that think for hours, not milliseconds. This managed platform finally closes the gap between proof-of-concept agents running on your laptop and production systems handling millions of enterprise workflows.</deck>
+
+${toc}
+
 ## 1. The "What & Why" (Foundation)
 
-**TLDR**: AgentCore solves the "last mile" problem of deploying AI agents to production. It provides seven integrated services that handle infrastructure, security, memory, and observability, letting you focus on agent logic instead of operational complexity. Think of it as "AWS Lambda for AI agents" with unique 8-hour session support.
+<tldr>AgentCore solves the "last mile" problem of deploying AI agents to production. It provides seven integrated services that handle infrastructure, security, memory, and observability, letting you focus on agent logic instead of operational complexity. Think of it as "AWS Lambda for AI agents" with unique 8-hour session support.</tldr>
 
 ### One Clear Definition
 
@@ -57,7 +61,7 @@ AgentCore abstracts all the infrastructure plumbing—you define what tools your
 
 ## 2. Real-World Usage (Context First)
 
-**TLDR**: AgentCore excels at long-running (up to 8 hours), multi-agent systems with strict security requirements. It's proven in finance, healthcare, and enterprise SaaS at companies like Itaú Unibanco and Innovaccer. Not ideal for simple lookups or real-time sub-100ms applications—use traditional APIs for those.
+<tldr>AgentCore excels at long-running (up to 8 hours), multi-agent systems with strict security requirements. It's proven in finance, healthcare, and enterprise SaaS at companies like Itaú Unibanco and Innovaccer. Not ideal for simple lookups or real-time sub-100ms applications—use traditional APIs for those.</tldr>
 
 ### Most Common Patterns and Use Cases
 
@@ -123,7 +127,7 @@ AgentCore abstracts all the infrastructure plumbing—you define what tools your
 
 ## 3. Comparisons & Alternatives
 
-**TLDR**: AgentCore is a managed service (AWS handles infrastructure), while LangChain/CrewAI/AutoGen are frameworks (reusable code libraries you run on your own servers). Choose AgentCore for production enterprise deployments with security/compliance needs and long-running workflows. Choose frameworks for maximum flexibility and avoiding vendor lock-in.
+<tldr>AgentCore is a managed service (AWS handles infrastructure), while LangChain/CrewAI/AutoGen are frameworks (reusable code libraries you run on your own servers). Choose AgentCore for production enterprise deployments with security/compliance needs and long-running workflows. Choose frameworks for maximum flexibility and avoiding vendor lock-in.</tldr>
 
 ### Understanding Agent Frameworks
 
@@ -249,7 +253,7 @@ HIPAA, audit logs, role-based access control, PHI handling.
 
 ## 4. Quick Reference: Commands, Configuration & Code Snippets
 
-**TLDR**: This section provides copy-paste commands, configuration templates, and working code examples for common AgentCore tasks. Use this as a hands-on reference when building agents. All code examples include inline comments explaining what each block demonstrates.
+<tldr>This section provides copy-paste commands, configuration templates, and working code examples for common AgentCore tasks. Use this as a hands-on reference when building agents. All code examples include inline comments explaining what each block demonstrates.</tldr>
 
 ### Essential CLI Commands
 
@@ -543,7 +547,7 @@ await session.close()
 
 ## 5. Core Concepts Unpacked
 
-**TLDR**: This section builds mental models for AgentCore's seven services using concrete metaphors and plain-English explanations. Key concepts include microVMs (lightweight virtual machines like mini-computers for each agent), cold starts (initialization time like opening an app for the first time vs resuming from background), and session warmth (keeping agents ready to respond quickly).
+<tldr>This section builds mental models for AgentCore's seven services using concrete metaphors and plain-English explanations. Key concepts include microVMs (lightweight virtual machines like mini-computers for each agent), cold starts (initialization time like opening an app for the first time vs resuming from background), and session warmth (keeping agents ready to respond quickly).</tldr>
 
 ### Fundamental Building Blocks (Plain English)
 
@@ -710,7 +714,7 @@ Note: Unlike a typical phone call limited to a few minutes, AgentCore sessions c
 
 ## 6. How It Actually Works
 
-**TLDR**: AgentCore uses a microVM-based architecture where each agent session runs in isolation. The platform handles session lifecycle automatically (warm sessions for 15 minutes, terminate after 8 hours max), routes tool calls through Identity for security, and traces everything for observability. Understanding WHY this architecture matters helps you design better agents.
+<tldr>AgentCore uses a microVM-based architecture where each agent session runs in isolation. The platform handles session lifecycle automatically (warm sessions for 15 minutes, terminate after 8 hours max), routes tool calls through Identity for security, and traces everything for observability. Understanding WHY this architecture matters helps you design better agents.</tldr>
 
 ### Architecture Deep-Dive with WHY Explanations
 
@@ -954,7 +958,7 @@ This caching is transparent but critical—it prevents authentication bottleneck
 
 ## 7. Integration Patterns
 
-**TLDR**: AgentCore supports five main architectural patterns for integrating agents into your systems. Hub-and-spoke (one central coordinator with multiple specialists, like a manager with a team) is most common for multi-agent systems. Daisy-chain (sequential processing like an assembly line) works for multi-step workflows. Understanding pattern names and trade-offs helps you design scalable agent architectures.
+<tldr>AgentCore supports five main architectural patterns for integrating agents into your systems. Hub-and-spoke (one central coordinator with multiple specialists, like a manager with a team) is most common for multi-agent systems. Daisy-chain (sequential processing like an assembly line) works for multi-step workflows. Understanding pattern names and trade-offs helps you design scalable agent architectures.</tldr>
 
 ### Common Architectural Patterns
 
@@ -1236,7 +1240,7 @@ span.set_attribute("success", success)
 
 ## 8. Practical Considerations
 
-**TLDR**: AgentCore offers three deployment models (fully managed, VPC-connected, hybrid) and auto-scales horizontally from 0 to thousands of sessions. Session duration limits are 8 hours max, memory ranges from 128MB to 8GB, and pricing is consumption-based. Understanding cost optimization strategies (parallel tool calls, caching, right-sizing resources) can reduce bills by 50-70%.
+<tldr>AgentCore offers three deployment models (fully managed, VPC-connected, hybrid) and auto-scales horizontally from 0 to thousands of sessions. Session duration limits are 8 hours max, memory ranges from 128MB to 8GB, and pricing is consumption-based. Understanding cost optimization strategies (parallel tool calls, caching, right-sizing resources) can reduce bills by 50-70%.</tldr>
 
 ### Deployment Models & Options
 
@@ -1433,7 +1437,7 @@ await memory.store_facts([
 
 ## 9. Recent Advances & Trajectory
 
-**TLDR**: AgentCore launched in July 2025 with seven core services. Recent additions include Gateway (August 2025), SRE reference architecture (September 2025), and A2A Protocol 2.0 (November 2025). AWS invests heavily ($100M+ funding), with 150+ enterprises in production. Roadmap includes serverless SQL, enhanced memory, and vision support.
+<tldr>AgentCore launched in July 2025 with seven core services. Recent additions include Gateway (August 2025), SRE reference architecture (September 2025), and A2A Protocol 2.0 (November 2025). AWS invests heavily ($100M+ funding), with 150+ enterprises in production. Roadmap includes serverless SQL, enhanced memory, and vision support.</tldr>
 
 ### Major Features (Last 12-24 Months)
 
@@ -1543,7 +1547,7 @@ Originally AWS-only. Now: VPC connectivity means agents can access on-prem resou
 
 ## 10. Free Tier Experiments & Quick Starts
 
-**TLDR**: AWS offers 12-month free tier with $100/month credits for new accounts, allowing affordable AgentCore experimentation. You can build your first agent in 30 minutes (costs ~$0.003 per test), a multi-agent coordinator in 1 hour (~$0.01 per request), or an agent with memory in 2 hours (~$0.02 per request).
+<tldr>AWS offers 12-month free tier with $100/month credits for new accounts, allowing affordable AgentCore experimentation. You can build your first agent in 30 minutes (costs ~$0.003 per test), a multi-agent coordinator in 1 hour (~$0.01 per request), or an agent with memory in 2 hours (~$0.02 per request).</tldr>
 
 ### What Free Tier Lets You Explore
 
@@ -1730,7 +1734,7 @@ if __name__ == "__main__":
 
 ## 11. Gotchas, Misconceptions & War Stories
 
-**TLDR**: Common pitfalls include over-provisioning resources (8-16x cost waste), storing sensitive data in memory (compliance violations), and ignoring tool failures. Key misconceptions: AgentCore doesn't handle agent logic for you, it's not ideal for everything, and agents aren't truly autonomous without good tools. Learn from war stories like the $50K runaway cost explosion and Asana's data leak incident.
+<tldr>Common pitfalls include over-provisioning resources (8-16x cost waste), storing sensitive data in memory (compliance violations), and ignoring tool failures. Key misconceptions: AgentCore doesn't handle agent logic for you, it's not ideal for everything, and agents aren't truly autonomous without good tools. Learn from war stories like the $50K runaway cost explosion and Asana's data leak incident.</tldr>
 
 ### Common Pitfalls
 
@@ -2022,7 +2026,7 @@ await memory.store_facts(important_facts)
 
 ## 12. How to Learn More
 
-**TLDR**: Best learning path: Start with YouTube (15 min "What is AgentCore?"), read AWS docs (1 hour), build simple agent (30 min hands-on). Progress through LinkedIn Learning courses, community projects, and production deployment. Total investment: ~30 hours over 4 weeks, ~$10-20 in AWS credits.
+<tldr>Best learning path: Start with YouTube (15 min "What is AgentCore?"), read AWS docs (1 hour), build simple agent (30 min hands-on). Progress through LinkedIn Learning courses, community projects, and production deployment. Total investment: ~30 hours over 4 weeks, ~$10-20 in AWS credits.</tldr>
 
 ### Specific Courses
 

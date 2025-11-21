@@ -10,9 +10,13 @@
 
 # LangFuse: A Comprehensive Technical Explainer for Engineers
 
+<deck>LangFuse emerged when teams realized that traditional observability tools couldn't debug non-deterministic AI systems. It captures every LLM execution detail—prompts, responses, costs, timing—transforming opaque AI workflows into inspectable, improvable systems.</deck>
+
+${toc}
+
 ## 1. The "What & Why" – Foundation
 
-**TLDR**: LangFuse is an open-source platform that records every step of your AI application's execution—prompts, responses, costs, timing—making it possible to debug non-deterministic LLM (Large Language Model) behavior, optimize costs, and systematically improve quality. Think of it as flight recorder data for your AI systems.
+<tldr>LangFuse is an open-source platform that records every step of your AI application's execution—prompts, responses, costs, timing—making it possible to debug non-deterministic LLM (Large Language Model) behavior, optimize costs, and systematically improve quality. Think of it as flight recorder data for your AI systems.</tldr>
 
 ### One-Sentence Definition
 
@@ -97,7 +101,7 @@ Think of LangFuse as the **nervous system** for your LLM application—it observ
 
 ## 2. Real-World Usage – Context First
 
-**TLDR**: LangFuse excels at four core patterns: production debugging (finding why specific requests failed), cost optimization (identifying and reducing expensive operations), continuous evaluation (A/B testing prompts systematically), and agent monitoring (visualizing complex multi-step AI workflows). Used by backend engineers, SREs, data engineers, and product managers at startups to enterprises handling billions of events monthly.
+<tldr>LangFuse excels at four core patterns: production debugging (finding why specific requests failed), cost optimization (identifying and reducing expensive operations), continuous evaluation (A/B testing prompts systematically), and agent monitoring (visualizing complex multi-step AI workflows). Used by backend engineers, SREs, data engineers, and product managers at startups to enterprises handling billions of events monthly.</tldr>
 
 ### Most Common Patterns
 
@@ -189,7 +193,7 @@ Real-world adoption examples include startups building AI-powered products, fint
 
 ## 3. Comparisons & Alternatives
 
-**TLDR**: Choose LangFuse for self-hosting, framework flexibility, and avoiding vendor lock-in. Choose LangSmith if you're all-in on LangChain and want minimal friction. Choose Helicone for proxy-based caching and extreme scale. Choose Arize Phoenix for RAG debugging in development. Choose Weights & Biases or MLflow for full ML lifecycle including model training.
+<tldr>Choose LangFuse for self-hosting, framework flexibility, and avoiding vendor lock-in. Choose LangSmith if you're all-in on LangChain and want minimal friction. Choose Helicone for proxy-based caching and extreme scale. Choose Arize Phoenix for RAG debugging in development. Choose Weights & Biases or MLflow for full ML lifecycle including model training.</tldr>
 
 ### Decision Matrix: When to Choose LangFuse
 
@@ -290,7 +294,7 @@ Real-world adoption examples include startups building AI-powered products, fint
 
 ## 4. Quick Reference
 
-**TLDR**: Install with `pip install langfuse` or `npm install @langfuse/client`. Use the `@observe()` decorator for automatic tracing, integrate with LangChain/LlamaIndex via callback handlers, or manually instrument with context managers. Configure via environment variables. Always call `langfuse.flush()` in serverless environments.
+<tldr>Install with `pip install langfuse` or `npm install @langfuse/client`. Use the `@observe()` decorator for automatic tracing, integrate with LangChain/LlamaIndex via callback handlers, or manually instrument with context managers. Configure via environment variables. Always call `langfuse.flush()` in serverless environments.</tldr>
 
 ### Essential Installation & Setup
 
@@ -514,7 +518,7 @@ with langfuse.trace(name="chat-turn-2", session_id=session_id) as t2:
 
 ## 5. Core Concepts Unpacked
 
-**TLDR**: LangFuse's data model centers on traces (complete execution records), observations (units of work like LLM calls), sessions (multi-turn conversations), datasets (test sets), experiments (structured testing), evaluations (quality scoring), and prompts (versioned templates). Understanding these building blocks enables effective debugging, testing, and optimization of LLM applications.
+<tldr>LangFuse's data model centers on traces (complete execution records), observations (units of work like LLM calls), sessions (multi-turn conversations), datasets (test sets), experiments (structured testing), evaluations (quality scoring), and prompts (versioned templates). Understanding these building blocks enables effective debugging, testing, and optimization of LLM applications.</tldr>
 
 ### Traces: The Foundation
 
@@ -739,7 +743,7 @@ Scores allow you to:
 
 ## 6. How It Actually Works – Architecture Deep Dive
 
-**TLDR**: LangFuse uses a multi-database architecture: Postgres for transactional data (users, API keys), ClickHouse for analytical queries (traces, metrics), Redis for async queuing, and S3 for media. SDK batches events asynchronously, ingestion layer validates and queues, workers process in background, data is stored separately by use case. This design enables low-latency tracing while handling billions of events.
+<tldr>LangFuse uses a multi-database architecture: Postgres for transactional data (users, API keys), ClickHouse for analytical queries (traces, metrics), Redis for async queuing, and S3 for media. SDK batches events asynchronously, ingestion layer validates and queues, workers process in background, data is stored separately by use case. This design enables low-latency tracing while handling billions of events.</tldr>
 
 ### The Big Picture: Event Ingestion to Analytics
 
@@ -910,7 +914,7 @@ This means you can:
 
 ## 7. Integration Patterns
 
-**TLDR**: LangFuse integrates via four patterns: decorator-based (simplest, one-line `@observe()`), context managers (most flexible, manual instrumentation), framework callbacks (automatic for LangChain/LlamaIndex), and OpenTelemetry (most scalable, vendor-neutral). Works with vector stores, SQL databases, microservices, and all major cloud LLM providers (AWS Bedrock, Vertex AI, Azure OpenAI).
+<tldr>LangFuse integrates via four patterns: decorator-based (simplest, one-line `@observe()`), context managers (most flexible, manual instrumentation), framework callbacks (automatic for LangChain/LlamaIndex), and OpenTelemetry (most scalable, vendor-neutral). Works with vector stores, SQL databases, microservices, and all major cloud LLM providers (AWS Bedrock, Vertex AI, Azure OpenAI).</tldr>
 
 ### Integration with Common Databases
 
@@ -1071,7 +1075,7 @@ trace.get_tracer_provider().add_span_processor(
 
 ## 8. Practical Considerations
 
-**TLDR**: Deploy via cloud (zero ops, $29+/month), Docker Compose (quickest self-hosted, 10 min setup), Kubernetes (production-ready, horizontal scaling), or Terraform (AWS automation). Scales to billions of events monthly. Tracing adds <5ms latency. Cloud pricing is $8 per 100k units after base; self-hosting costs $200–$2000/month for infrastructure. ClickHouse writes are the main bottleneck.
+<tldr>Deploy via cloud (zero ops, $29+/month), Docker Compose (quickest self-hosted, 10 min setup), Kubernetes (production-ready, horizontal scaling), or Terraform (AWS automation). Scales to billions of events monthly. Tracing adds <5ms latency. Cloud pricing is $8 per 100k units after base; self-hosting costs $200–$2000/month for infrastructure. ClickHouse writes are the main bottleneck.</tldr>
 
 ### Deployment Models & Options
 
@@ -1305,7 +1309,7 @@ For high volume, self-hosting often wins financially.
 
 ## 10. LLM Application Observability & Evaluation (Custom Focus)
 
-**TLDR**: Production LLM monitoring requires tracing hierarchical workflows (RAG pipelines, agent chains), versioned prompt management with A/B testing, granular cost tracking (by model, token type, user), automated quality evaluation (LLM-as-a-judge for hallucination/relevance), debugging failed responses via trace inspection, and framework-agnostic integration (LangChain, LlamaIndex, custom code). LangFuse excels at all six, enabling systematic improvement cycles.
+<tldr>Production LLM monitoring requires tracing hierarchical workflows (RAG pipelines, agent chains), versioned prompt management with A/B testing, granular cost tracking (by model, token type, user), automated quality evaluation (LLM-as-a-judge for hallucination/relevance), debugging failed responses via trace inspection, and framework-agnostic integration (LangChain, LlamaIndex, custom code). LangFuse excels at all six, enabling systematic improvement cycles.</tldr>
 
 ### Monitoring LLM Applications in Production
 
@@ -1739,7 +1743,7 @@ def my_custom_rag(question: str):
 
 ## 11. Free Tier Experiments – 30 Min to 2 Hour Test Drives
 
-**TLDR**: Start with 30-minute trace capture (install SDK, add `@observe()` decorator, see first trace). Progress to 1-hour LangChain RAG tracing (build simple retrieval chain, observe hierarchical execution). Advance to 2-hour evaluation loop (create dataset, run experiments, compare results). Free tier offers 50k units/month; self-hosting is unlimited and free.
+<tldr>Start with 30-minute trace capture (install SDK, add `@observe()` decorator, see first trace). Progress to 1-hour LangChain RAG tracing (build simple retrieval chain, observe hierarchical execution). Advance to 2-hour evaluation loop (create dataset, run experiments, compare results). Free tier offers 50k units/month; self-hosting is unlimited and free.</tldr>
 
 ### Quick Start: 30-Minute Trace Capture
 
@@ -2113,7 +2117,7 @@ A globally deployed app had users in Europe experiencing slow responses. With tr
 
 ## 13. How to Learn More
 
-**TLDR**: Start with official docs (`langfuse.com/docs`) for quick setup, Python/TypeScript SDK references, and self-hosting guides. Join Discord (5k+ members, bi-weekly town halls) for community support. Explore GitHub discussions for detailed Q&A. Check YouTube for official demos and community tutorials. No dedicated courses yet, but general LLM observability content applies.
+<tldr>Start with official docs (`langfuse.com/docs`) for quick setup, Python/TypeScript SDK references, and self-hosting guides. Join Discord (5k+ members, bi-weekly town halls) for community support. Explore GitHub discussions for detailed Q&A. Check YouTube for official demos and community tutorials. No dedicated courses yet, but general LLM observability content applies.</tldr>
 
 ### Official Documentation & Tutorials
 
@@ -2256,7 +2260,7 @@ No dedicated LangFuse book, but:
 
 ## 15. Next Steps – Your Learning Path
 
-**TLDR**: Start with a 30-minute quick win (trace one LLM call), progress to integration (add to your main app in 1-2 hours), build datasets from production (1 day), run experiments (1 day), then deploy with confidence using evaluation results. Revisit this guide when adding new LLM features or optimizing costs.
+<tldr>Start with a 30-minute quick win (trace one LLM call), progress to integration (add to your main app in 1-2 hours), build datasets from production (1 day), run experiments (1 day), then deploy with confidence using evaluation results. Revisit this guide when adding new LLM features or optimizing costs.</tldr>
 
 ### Immediate Actions (Next 30 Minutes)
 

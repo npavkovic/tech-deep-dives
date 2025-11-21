@@ -10,13 +10,23 @@
 
 # Cloudflare Pages: The Complete Technical Guide to Static Site Hosting Without Servers
 
-**TLDR**: Cloudflare Pages is a deployment platform that automatically builds and hosts your static websites (HTML, CSS, JavaScript) on Cloudflare's global network of 300+ data centers. Instead of managing web servers, you connect your GitHub repository, and Pages handles everything: building your site, deploying it worldwide, providing SSL certificates, and serving it from locations near your users for fast loading. The free tier includes unlimited bandwidth and 500 builds per month—enough for most projects.
+<deck>
+Traditional web hosting forces users across the globe to wait for data to travel from your single server—physics creates unavoidable delays that no optimization can fix. Cloudflare Pages pre-builds your site once and distributes it to 300+ locations worldwide, so every user gets instant responses from nearby servers without managing any infrastructure.
+</deck>
+
+${toc}
+
+<tldr>
+Cloudflare Pages is a deployment platform that automatically builds and hosts your static websites (HTML, CSS, JavaScript) on Cloudflare's global network of 300+ data centers. Instead of managing web servers, you connect your GitHub repository, and Pages handles everything: building your site, deploying it worldwide, providing SSL certificates, and serving it from locations near your users for fast loading. The free tier includes unlimited bandwidth and 500 builds per month—enough for most projects.
+</tldr>
 
 ---
 
 ## The "What & Why" Foundation: Understanding Cloudflare Pages
 
-**TLDR**: Traditional web hosting requires running a server 24/7 to respond to user requests, which is slow for distant users and expensive to scale. Cloudflare Pages eliminates the server entirely by pre-building your site once and distributing the static files (HTML, CSS, images) to 300+ locations worldwide. Users get instant responses from nearby servers instead of waiting for data to travel across the globe.
+<tldr>
+Traditional web hosting requires running a server 24/7 to respond to user requests, which is slow for distant users and expensive to scale. Cloudflare Pages eliminates the server entirely by pre-building your site once and distributing the static files (HTML, CSS, images) to 300+ locations worldwide. Users get instant responses from nearby servers instead of waiting for data to travel across the globe.
+</tldr>
 
 ### Defining Cloudflare Pages in Plain Terms
 
@@ -86,7 +96,9 @@ When you configure your domain (like `example.com`) to use Cloudflare as your **
 
 ## Real-World Usage: What Cloudflare Pages Excels At
 
-**TLDR**: Pages is perfect for websites where the HTML can be pre-built: marketing sites, blogs, documentation, e-commerce product pages, and single-page applications (SPAs). It handles millions of visitors without slowdown because you're using Cloudflare's infrastructure, not your own servers. However, it's not ideal for applications requiring real-time websockets, heavy server-side processing, or applications where every page view needs unique, personalized content generated on-demand.
+<tldr>
+Pages is perfect for websites where the HTML can be pre-built: marketing sites, blogs, documentation, e-commerce product pages, and single-page applications (SPAs). It handles millions of visitors without slowdown because you're using Cloudflare's infrastructure, not your own servers. However, it's not ideal for applications requiring real-time websockets, heavy server-side processing, or applications where every page view needs unique, personalized content generated on-demand.
+</tldr>
 
 ### Common Use Cases Where Pages Excels
 
@@ -184,7 +196,9 @@ Cloudflare serves **trillions of requests per month** across its customer base�
 
 ## JAMstack Architecture: Static Sites Don't Mean Static Functionality
 
-**TLDR**: JAMstack stands for JavaScript (client-side code), APIs (backend services), and Markup (pre-rendered HTML). Instead of generating HTML on every request, you build all your HTML once during deployment, deliver it instantly from the edge, and add dynamic features through JavaScript API calls. This gives you the speed of static sites with the functionality of dynamic applications—think Amazon product pages (static, same for everyone) with real-time inventory checks and shopping cart (dynamic, via JavaScript API calls).
+<tldr>
+JAMstack stands for JavaScript (client-side code), APIs (backend services), and Markup (pre-rendered HTML). Instead of generating HTML on every request, you build all your HTML once during deployment, deliver it instantly from the edge, and add dynamic features through JavaScript API calls. This gives you the speed of static sites with the functionality of dynamic applications—think Amazon product pages (static, same for everyone) with real-time inventory checks and shopping cart (dynamic, via JavaScript API calls).
+</tldr>
 
 ### Understanding JAMstack and Why It Enables Modern Development
 
@@ -307,7 +321,9 @@ The build process is **version-controlled** (stored in Git) and **reproducible**
 
 ## Comparisons with Alternatives: Choosing Your Platform
 
-**TLDR**: Choose Cloudflare Pages for integrated security + CDN, predictable pricing (pay per build, not per request), and avoiding cloud vendor lock-in. Choose Vercel for the best Next.js experience with framework-specific optimizations. Choose Netlify for deep JAMstack ecosystem integration. Choose AWS Amplify if your entire infrastructure is on AWS. Choose Railway/Render/Fly.io if your application needs traditional servers (containers, persistent connections, full backend processes).
+<tldr>
+Choose Cloudflare Pages for integrated security + CDN, predictable pricing (pay per build, not per request), and avoiding cloud vendor lock-in. Choose Vercel for the best Next.js experience with framework-specific optimizations. Choose Netlify for deep JAMstack ecosystem integration. Choose AWS Amplify if your entire infrastructure is on AWS. Choose Railway/Render/Fly.io if your application needs traditional servers (containers, persistent connections, full backend processes).
+</tldr>
 
 ### Cloudflare Pages vs. Vercel
 
@@ -411,7 +427,9 @@ These are **container-based platforms** for traditional applications, fundamenta
 
 ## Getting Started: Free Tier Experiments
 
-**TLDR**: You can deploy your first site in under 30 minutes using the free tier, which includes unlimited bandwidth and 500 builds per month. The learning path is: deploy a simple HTML file → deploy a React app with preview deployments → add serverless functions for dynamic features. The free tier is genuinely generous enough for real projects, not just toy examples.
+<tldr>
+You can deploy your first site in under 30 minutes using the free tier, which includes unlimited bandwidth and 500 builds per month. The learning path is: deploy a simple HTML file → deploy a React app with preview deployments → add serverless functions for dynamic features. The free tier is genuinely generous enough for real projects, not just toy examples.
+</tldr>
 
 ### 30-Minute Quick Start: Deploy Your First Site
 
@@ -551,7 +569,9 @@ These are **container-based platforms** for traditional applications, fundamenta
 
 ## Gotchas, Misconceptions, and War Stories
 
-**TLDR**: Common surprises include longer build times for large sites (optimize by using faster frameworks), cached HTML staying stale longer than expected (set appropriate cache headers), preview deployments being publicly accessible by default (protect with Cloudflare Access if needed), and forgetting that Pages Functions are stateless (don't store data in memory—use KV or Durable Objects).
+<tldr>
+Common surprises include longer build times for large sites (optimize by using faster frameworks), cached HTML staying stale longer than expected (set appropriate cache headers), preview deployments being publicly accessible by default (protect with Cloudflare Access if needed), and forgetting that Pages Functions are stateless (don't store data in memory—use KV or Durable Objects).
+</tldr>
 
 ### Common Misconceptions
 
@@ -632,7 +652,9 @@ export async function onRequest(context) {
 
 ## How to Learn More
 
-**TLDR**: Start with Cloudflare's official documentation at developers.cloudflare.com/pages, join the Cloudflare Developers Discord for community help, follow @CloudflareDev on Twitter for updates, and refer to framework-specific guides (Next.js, Gatsby, Astro docs) for optimization tips.
+<tldr>
+Start with Cloudflare's official documentation at developers.cloudflare.com/pages, join the Cloudflare Developers Discord for community help, follow @CloudflareDev on Twitter for updates, and refer to framework-specific guides (Next.js, Gatsby, Astro docs) for optimization tips.
+</tldr>
 
 ### Official Resources
 

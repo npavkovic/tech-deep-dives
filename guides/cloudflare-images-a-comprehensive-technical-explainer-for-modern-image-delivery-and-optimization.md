@@ -10,13 +10,23 @@
 
 # Cloudflare Images: A Comprehensive Technical Explainer for Modern Image Delivery and Optimization
 
-**TLDR**: Cloudflare Images is a globally distributed image optimization platform that automatically transforms, compresses, and serves images in the optimal format (WebP, AVIF, JPEG) and size for each user's device and browser. It eliminates the engineering overhead of building image infrastructure while reducing bandwidth costs by 25-80% through intelligent format selection and on-demand variant generation. The service handles everything from storage to transformation to delivery across 330+ edge locations worldwide.
+<deck>
+Images account for 50-80% of webpage data, yet most developers serve oversized files to all users—wasting bandwidth and slowing load times. Cloudflare Images automatically detects each browser's capabilities and serves the optimal format (AVIF, WebP, or JPEG) and size from 330+ edge locations, reducing bandwidth by 25-80% without any engineering overhead.
+</deck>
+
+${toc}
+
+<tldr>
+Cloudflare Images is a globally distributed image optimization platform that automatically transforms, compresses, and serves images in the optimal format (WebP, AVIF, JPEG) and size for each user's device and browser. It eliminates the engineering overhead of building image infrastructure while reducing bandwidth costs by 25-80% through intelligent format selection and on-demand variant generation. The service handles everything from storage to transformation to delivery across 330+ edge locations worldwide.
+</tldr>
 
 **Cloudflare Images is a globally distributed, API-first image optimization and delivery platform that automatically transforms, compresses, and serves images in the optimal format and size for each user's device and browser, eliminating the traditional engineering overhead of building and maintaining image infrastructure while reducing bandwidth costs through intelligent format selection and on-demand variant generation.**[1][4] This comprehensive guide explores how this system works, why it matters for both performance and cost, when to use it versus alternatives, and how to integrate it into production systems at any scale. The platform addresses a persistent architectural challenge that has plagued web development for two decades: how to serve high-quality images efficiently to a global audience with diverse devices, networks, and browser capabilities without building complex, error-prone image processing pipelines.
 
 ## Part 1: Foundation and Core Concepts
 
-**TLDR**: Images make up 50-80% of webpage data, wasting bandwidth and slowing load times when not optimized. Historically, developers either pre-generated all size variants (expensive storage) or built custom transformation servers (expensive infrastructure). Cloudflare Images solves this by handling transformations at the network edge, automatically detecting browser capabilities, and serving optimal formats—all without requiring you to manage servers or storage infrastructure.
+<tldr>
+Images make up 50-80% of webpage data, wasting bandwidth and slowing load times when not optimized. Historically, developers either pre-generated all size variants (expensive storage) or built custom transformation servers (expensive infrastructure). Cloudflare Images solves this by handling transformations at the network edge, automatically detecting browser capabilities, and serving optimal formats—all without requiring you to manage servers or storage infrastructure.
+</tldr>
 
 ### What Problem Does Image Optimization Solve?
 
@@ -44,7 +54,9 @@ This positioning is crucial: Cloudflare Images sits at the network edge, not at 
 
 ## Part 2: Real-World Usage Patterns and Economics
 
-**TLDR**: E-commerce platforms (product catalogs with multiple image variants), creator platforms (user-generated content at scale like VSCO's 2.3 petabytes), responsive websites (serving different image sizes to mobile vs desktop), and AI-generated content workflows are the main use cases. The platform scales from tiny blogs (50 images) to massive platforms (billions of images monthly), with pricing that adjusts based on actual usage rather than charging small projects enterprise rates.
+<tldr>
+E-commerce platforms (product catalogs with multiple image variants), creator platforms (user-generated content at scale like VSCO's 2.3 petabytes), responsive websites (serving different image sizes to mobile vs desktop), and AI-generated content workflows are the main use cases. The platform scales from tiny blogs (50 images) to massive platforms (billions of images monthly), with pricing that adjusts based on actual usage rather than charging small projects enterprise rates.
+</tldr>
 
 ### Common Use Cases Where Cloudflare Images Excels
 
@@ -84,7 +96,9 @@ Conversely, the platform has clear limitations that determine when alternatives 
 
 ## Part 3: Understanding Image Optimization Economics and Modern Formats
 
-**TLDR**: Unoptimized images cost $10,000-$20,000 monthly in bandwidth for sites with 1 million visitors, while also slowing page loads by 1-2 seconds (each second of delay reduces conversions by 7%). Modern formats (WebP saves 25-35%, AVIF saves 50% vs JPEG) dramatically cut costs and improve performance, but require complex browser detection to serve the right format to each user—which Cloudflare Images handles automatically.
+<tldr>
+Unoptimized images cost $10,000-$20,000 monthly in bandwidth for sites with 1 million visitors, while also slowing page loads by 1-2 seconds (each second of delay reduces conversions by 7%). Modern formats (WebP saves 25-35%, AVIF saves 50% vs JPEG) dramatically cut costs and improve performance, but require complex browser detection to serve the right format to each user—which Cloudflare Images handles automatically.
+</tldr>
 
 ### The Financial Motivation Behind Image Optimization
 
@@ -118,7 +132,9 @@ Lighthouse (Google's page quality audit tool) now explicitly scores image optimi
 
 ## Part 4: How Cloudflare Images Actually Works
 
-**TLDR**: Cloudflare Images has 330+ edge locations worldwide. When you upload an image, it's stored globally. When a browser requests a transformed image (via URL parameters like "w=800,format=auto"), the nearest edge server checks its cache, and either serves the cached version instantly or generates the transformation on-the-fly from the original, then caches it for future requests. This architecture means low latency (transformation happens close to users) and efficient bandwidth (only required sizes are generated).
+<tldr>
+Cloudflare Images has 330+ edge locations worldwide. When you upload an image, it's stored globally. When a browser requests a transformed image (via URL parameters like "w=800,format=auto"), the nearest edge server checks its cache, and either serves the cached version instantly or generates the transformation on-the-fly from the original, then caches it for future requests. This architecture means low latency (transformation happens close to users) and efficient bandwidth (only required sizes are generated).
+</tldr>
 
 ### Architecture Overview
 
@@ -152,7 +168,9 @@ The platform handles a subtle but important caching challenge: serving the corre
 
 ## Part 5: Feature Deep Dive and Core Capabilities
 
-**TLDR**: Cloudflare Images offers two models: "Images Stored" (upload to Cloudflare, pay for storage + delivery) or "Images Transformed" (store elsewhere, just pay for transformations). Variants let you define presets like "thumbnail=100×100" without pre-generating files. Advanced features include quality adjustment, face cropping (AI-powered), watermarks, background removal, and signed URLs for private images.
+<tldr>
+Cloudflare Images offers two models: "Images Stored" (upload to Cloudflare, pay for storage + delivery) or "Images Transformed" (store elsewhere, just pay for transformations). Variants let you define presets like "thumbnail=100×100" without pre-generating files. Advanced features include quality adjustment, face cropping (AI-powered), watermarks, background removal, and signed URLs for private images.
+</tldr>
 
 ### Storage and Delivery Models
 
@@ -186,7 +204,9 @@ Additionally, image requests go through Cloudflare's security infrastructure, me
 
 ## Part 6: Competitive Landscape and When to Choose Each Option
 
-**TLDR**: Cloudinary offers the richest features and DAM (digital asset management) but unpredictable pricing. ImageKit balances performance and cost with simpler features. AWS S3+CloudFront+Lambda provides maximum flexibility but operational complexity. BunnyCDN offers the lowest bandwidth costs with unlimited transformations. Choose based on your priorities: features (Cloudinary), simplicity+cost (Cloudflare/ImageKit), flexibility (AWS), or pure cost (BunnyCDN).
+<tldr>
+Cloudinary offers the richest features and DAM (digital asset management) but unpredictable pricing. ImageKit balances performance and cost with simpler features. AWS S3+CloudFront+Lambda provides maximum flexibility but operational complexity. BunnyCDN offers the lowest bandwidth costs with unlimited transformations. Choose based on your priorities: features (Cloudinary), simplicity+cost (Cloudflare/ImageKit), flexibility (AWS), or pure cost (BunnyCDN).
+</tldr>
 
 ### Cloudinary: The Feature-Rich Competitor
 
@@ -234,7 +254,9 @@ BunnyCDN positions as a lean, cost-effective alternative with a fixed base fee (
 
 ## Part 7: Pricing Deep Dive and Economic Analysis
 
-**TLDR**: Cloudflare Images has three costs: transformations ($0.50 per 1,000 after free 5,000), storage ($5 per 100,000 images monthly), and delivery ($1 per 100,000 images). A small catalog (3,000 images, 100K views) costs ~$148 monthly. A large site (75,000 images, 2M views) costs ~$399 monthly. ROI is positive when you factor in performance improvements (5-10% conversion lift) and SEO benefits from faster page loads.
+<tldr>
+Cloudflare Images has three costs: transformations ($0.50 per 1,000 after free 5,000), storage ($5 per 100,000 images monthly), and delivery ($1 per 100,000 images). A small catalog (3,000 images, 100K views) costs ~$148 monthly. A large site (75,000 images, 2M views) costs ~$399 monthly. ROI is positive when you factor in performance improvements (5-10% conversion lift) and SEO benefits from faster page loads.
+</tldr>
 
 ### Understanding the Pricing Structure
 
@@ -278,7 +300,9 @@ Search engine rankings also improve when page load times decrease. Google explic
 
 ## Part 8: Integration Patterns and Real-World Architecture
 
-**TLDR**: Basic integration replaces image URLs with Cloudflare's transformation URLs. Advanced patterns use Cloudflare Workers (serverless edge functions) to add custom logic, integrate with databases by storing image IDs instead of full URLs, combine with R2 storage for cost optimization, and use "direct creator upload" to let users upload securely without exposing API keys.
+<tldr>
+Basic integration replaces image URLs with Cloudflare's transformation URLs. Advanced patterns use Cloudflare Workers (serverless edge functions) to add custom logic, integrate with databases by storing image IDs instead of full URLs, combine with R2 storage for cost optimization, and use "direct creator upload" to let users upload securely without exposing API keys.
+</tldr>
 
 ### Basic Integration Pattern
 
@@ -378,7 +402,9 @@ This pattern securely lets users upload without exposing your API token and lets
 
 ## Part 9: Scaling Considerations and Operational Reality
 
-**TLDR**: Cloudflare Images scales horizontally across 330+ locations—the first transformation request takes milliseconds, subsequent requests hit cache. Key optimization: use variants for common sizes instead of generating unique transformations per user. Reliability is generally excellent (99.9% uptime target), but outages do happen (59-minute incident in Feb 2025). Monitor transformation counts to avoid cost surprises from inefficient code.
+<tldr>
+Cloudflare Images scales horizontally across 330+ locations—the first transformation request takes milliseconds, subsequent requests hit cache. Key optimization: use variants for common sizes instead of generating unique transformations per user. Reliability is generally excellent (99.9% uptime target), but outages do happen (59-minute incident in Feb 2025). Monitor transformation counts to avoid cost surprises from inefficient code.
+</tldr>
 
 ### Performance Characteristics at Scale
 
@@ -408,7 +434,9 @@ Fifth, **access control**: for private images, use signed URLs but recognize tha
 
 ## Part 10: Recent Developments and Future Direction
 
-**TLDR**: Recent additions include AI-powered face cropping (auto-centering faces in profile pictures), background removal (isolating products from backgrounds), and batch APIs for migrations. The Feb 2025 outage highlighted distributed system fragility but Cloudflare's transparency was exemplary. Future direction emphasizes AI integration through Workers AI for advanced image analysis and generation at the edge.
+<tldr>
+Recent additions include AI-powered face cropping (auto-centering faces in profile pictures), background removal (isolating products from backgrounds), and batch APIs for migrations. The Feb 2025 outage highlighted distributed system fragility but Cloudflare's transparency was exemplary. Future direction emphasizes AI integration through Workers AI for advanced image analysis and generation at the edge.
+</tldr>
 
 ### Recent Features (2024-2025)
 
@@ -432,7 +460,9 @@ Cloudflare emphasizes AI integration, with Workers AI providing edge-accessible 
 
 ## Part 11: Getting Started and Learning Resources
 
-**TLDR**: Start with the free tier (5,000 transformations monthly). Upload a test image via dashboard, experiment with transformation URLs to see compression benefits, create variants for common sizes, and test in different browsers. The essential API operations are upload (POST with image file), create variant (define transformation preset), serve (URL with parameters), and delete. Official docs are comprehensive.
+<tldr>
+Start with the free tier (5,000 transformations monthly). Upload a test image via dashboard, experiment with transformation URLs to see compression benefits, create variants for common sizes, and test in different browsers. The essential API operations are upload (POST with image file), create variant (define transformation preset), serve (URL with parameters), and delete. Official docs are comprehensive.
+</tldr>
 
 ### Essential Cloudflare Images Commands
 
@@ -502,7 +532,9 @@ This hands-on experience clarifies how the platform works without requiring codi
 
 ## Part 12: Common Pitfalls and Misconceptions
 
-**TLDR**: Common gotchas include transformation count surprises (serving one image in 5 sizes = 5 transformations), cache fragmentation from inconsistent parameter formatting, and accidentally exposing sensitive EXIF metadata. Misconceptions: Cloudflare isn't always cheapest (BunnyCDN can be cheaper), storage is charged per image count (not file size), and responsive delivery requires proper HTML srcset implementation (it's not automatic).
+<tldr>
+Common gotchas include transformation count surprises (serving one image in 5 sizes = 5 transformations), cache fragmentation from inconsistent parameter formatting, and accidentally exposing sensitive EXIF metadata. Misconceptions: Cloudflare isn't always cheapest (BunnyCDN can be cheaper), storage is charged per image count (not file size), and responsive delivery requires proper HTML srcset implementation (it's not automatic).
+</tldr>
 
 ### Misconception: "Cloudflare Images is cheaper than all alternatives"
 

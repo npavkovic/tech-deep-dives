@@ -10,6 +10,10 @@
 
 # New Relic & Observability: The Comprehensive Technical Guide
 
+<deck>Before New Relic, debugging production meant SSHing into servers and grepping logs until your eyes bled. Unified observability changed the game by correlating metrics, traces, and logs—turning "the app is slow" into "database query X takes 3 seconds on table Y."</deck>
+
+${toc}
+
 **Written for technical professionals new to observability monitoring**
 
 ---
@@ -44,7 +48,7 @@
 
 # 1. The "What & Why" Foundation
 
-**TLDR**: New Relic is a unified observability platform that collects all your application data (metrics, logs, traces) in one place, replacing the fragmented monitoring tools of the past. It helps you understand *why* your system is slow or broken, not just *that* it's broken.
+<tldr>New Relic is a unified observability platform that collects all your application data (metrics, logs, traces) in one place, replacing the fragmented monitoring tools of the past. It helps you understand *why* your system is slow or broken, not just *that* it's broken.</tldr>
 
 ## One Sentence Definition
 

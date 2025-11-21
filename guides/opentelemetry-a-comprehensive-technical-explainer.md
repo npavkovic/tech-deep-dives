@@ -10,6 +10,10 @@
 
 # OpenTelemetry: A Comprehensive Technical Explainer
 
+<deck>Before OpenTelemetry, switching observability vendors meant rewriting all your instrumentation code. OpenTelemetry became the universal translator—instrument once with open standards, send telemetry data anywhere, never get locked into proprietary agents again.</deck>
+
+${toc}
+
 **OpenTelemetry is a vendor-neutral, open-source framework that standardizes how you collect, process, and export telemetry data (traces, metrics, and logs) from your applications and infrastructure.**
 
 In simpler terms: It's a universal translator for observability. Instead of being locked into one vendor's monitoring tools, OpenTelemetry lets you instrument your code once and send that data anywhere—Datadog, New Relic, Grafana, Prometheus, or your own custom backend.
@@ -37,7 +41,7 @@ In simpler terms: It's a universal translator for observability. Instead of bein
 
 ## The "What & Why" (Foundation)
 
-**TLDR**: Before OpenTelemetry, observability meant vendor lock-in and fragmented tooling. OpenTelemetry solves this by providing a single, standardized way to emit telemetry data (traces, metrics, logs) that any backend can understand. Think of it as USB-C for observability—one standard, many destinations.
+<tldr>Before OpenTelemetry, observability meant vendor lock-in and fragmented tooling. OpenTelemetry solves this by providing a single, standardized way to emit telemetry data (traces, metrics, logs) that any backend can understand. Think of it as USB-C for observability—one standard, many destinations.</tldr>
 
 ### Key Terms for Beginners
 
@@ -91,7 +95,7 @@ Your application instruments itself with OpenTelemetry SDKs. Data flows to an op
 
 ## Real-World Usage (Context First)
 
-**TLDR**: OpenTelemetry is the second most active CNCF project after Kubernetes, with 67,000+ contributors from major companies like Alibaba, GitHub, and Shopify. It's used across industries from fintech to government, scaling from startups to systems with thousands of microservices. Backend developers, SREs, and platform engineers interact with it daily.
+<tldr>OpenTelemetry is the second most active CNCF project after Kubernetes, with 67,000+ contributors from major companies like Alibaba, GitHub, and Shopify. It's used across industries from fintech to government, scaling from startups to systems with thousands of microservices. Backend developers, SREs, and platform engineers interact with it daily.</tldr>
 
 ### Who Uses This and at What Scale
 
@@ -161,7 +165,7 @@ High-quality, standardized telemetry data feeds AI-driven anomaly detection and 
 
 ## Comparisons & Alternatives
 
-**TLDR**: OpenTelemetry is complementary to backends like Jaeger and Prometheus, not a replacement. It competes with proprietary instrumentation (Datadog agents, New Relic agents) by offering vendor neutrality. Use OpenTelemetry for instrumentation, then choose your backend based on features and cost.
+<tldr>OpenTelemetry is complementary to backends like Jaeger and Prometheus, not a replacement. It competes with proprietary instrumentation (Datadog agents, New Relic agents) by offering vendor neutrality. Use OpenTelemetry for instrumentation, then choose your backend based on features and cost.</tldr>
 
 ### OpenTelemetry vs. Jaeger
 
@@ -370,7 +374,7 @@ service:
 
 ## Core Concepts Unpacked
 
-**TLDR**: OpenTelemetry standardizes three types of telemetry (signals): traces (request journeys), metrics (numbers over time), and logs (events). Spans are the building blocks of traces. Context propagation links spans across services. Sampling reduces data volume by keeping only important traces.
+<tldr>OpenTelemetry standardizes three types of telemetry (signals): traces (request journeys), metrics (numbers over time), and logs (events). Spans are the building blocks of traces. Context propagation links spans across services. Sampling reduces data volume by keeping only important traces.</tldr>
 
 ### Signals: The Three Pillars
 
@@ -564,7 +568,7 @@ Not every request needs to be fully traced. At scale, tracing everything becomes
 
 ## How It Actually Works
 
-**TLDR**: Your app uses OpenTelemetry SDKs to emit telemetry. Data flows through the OpenTelemetry Collector (receivers → processors → exporters) to your chosen backends. OTLP (OpenTelemetry Protocol) is the wire format using Protocol Buffers over gRPC or HTTP. Auto-instrumentation works by intercepting framework calls at runtime.
+<tldr>Your app uses OpenTelemetry SDKs to emit telemetry. Data flows through the OpenTelemetry Collector (receivers → processors → exporters) to your chosen backends. OTLP (OpenTelemetry Protocol) is the wire format using Protocol Buffers over gRPC or HTTP. Auto-instrumentation works by intercepting framework calls at runtime.</tldr>
 
 ### Architecture: The Big Picture
 
@@ -740,7 +744,7 @@ Go's runtime makes bytecode manipulation difficult. Manual instrumentation is re
 
 ## Integration Patterns
 
-**TLDR**: OpenTelemetry excels at distributed tracing across microservices by automatically propagating context through HTTP headers, gRPC metadata, and message queues. Use baggage for cross-service metadata (like tenant ID), but keep it small. Always capture and pass context explicitly in async operations to maintain trace continuity.
+<tldr>OpenTelemetry excels at distributed tracing across microservices by automatically propagating context through HTTP headers, gRPC metadata, and message queues. Use baggage for cross-service metadata (like tenant ID), but keep it small. Always capture and pass context explicitly in async operations to maintain trace continuity.</tldr>
 
 ### Distributed Tracing Across Microservices: The Deep Dive
 
@@ -922,7 +926,7 @@ baggage.set_baggage("user_id", user["id"])
 
 ## Practical Considerations
 
-**TLDR**: Deploy OpenTelemetry Collectors in hybrid mode (agents + gateway) for production. Expect ~3-35% CPU overhead depending on sampling rate. Scale Collectors horizontally with load balancers and HPAs. Cost is mostly storage and data egress; reduce with sampling, filtering, and self-hosted backends.
+<tldr>Deploy OpenTelemetry Collectors in hybrid mode (agents + gateway) for production. Expect ~3-35% CPU overhead depending on sampling rate. Scale Collectors horizontally with load balancers and HPAs. Cost is mostly storage and data egress; reduce with sampling, filtering, and self-hosted backends.</tldr>
 
 ### Deployment Models and Options
 
@@ -1091,7 +1095,7 @@ At 10,000 traces/second with 5 spans per trace, that's ~50,000 spans/second = 50
 
 ## Recent Advances & Trajectory
 
-**TLDR**: OpenTelemetry added profiling as a fourth signal (2024), enabling CPU/memory profiles linked to traces. eBPF-based zero-code instrumentation launched in alpha (November 2025). The Collector is approaching v1.0. GenAI observability and continuous profiling are on the roadmap for 2025-2026.
+<tldr>OpenTelemetry added profiling as a fourth signal (2024), enabling CPU/memory profiles linked to traces. eBPF-based zero-code instrumentation launched in alpha (November 2025). The Collector is approaching v1.0. GenAI observability and continuous profiling are on the roadmap for 2025-2026.</tldr>
 
 ### Major Features (Last 12-24 Months)
 
@@ -1166,7 +1170,7 @@ These precursors to OpenTelemetry are sunsetted. OpenTelemetry has consolidated 
 
 ## Free Tier Experiments
 
-**TLDR**: Start with a 30-minute Jaeger + Python Flask setup to see distributed tracing in action. For a production-like stack, try the 2-hour Grafana Tempo setup with Docker Compose. Experiment with tail sampling to understand data volume management. All core OpenTelemetry tools are free and open source.
+<tldr>Start with a 30-minute Jaeger + Python Flask setup to see distributed tracing in action. For a production-like stack, try the 2-hour Grafana Tempo setup with Docker Compose. Experiment with tail sampling to understand data volume management. All core OpenTelemetry tools are free and open source.</tldr>
 
 ### 30-Minute Quick Start: Jaeger + OpenTelemetry
 
@@ -1353,7 +1357,7 @@ With this config, all error traces are kept, slow traces are kept, and 10% of su
 
 ## Gotchas, Misconceptions & War Stories
 
-**TLDR**: Common mistakes include thinking OpenTelemetry is a complete APM (it's not—you need a backend), assuming zero overhead (expect 3-35% CPU depending on sampling), and losing context in async operations. Real production issues: tail sampling memory explosions, PII in baggage leaks, and recursive span explosions.
+<tldr>Common mistakes include thinking OpenTelemetry is a complete APM (it's not—you need a backend), assuming zero overhead (expect 3-35% CPU depending on sampling), and losing context in async operations. Real production issues: tail sampling memory explosions, PII in baggage leaks, and recursive span explosions.</tldr>
 
 ### Common Misconceptions
 
@@ -1553,7 +1557,7 @@ provider.add_span_processor(
 
 ## How to Learn More
 
-**TLDR**: Start with the official docs (opentelemetry.io) and the free CNCF course. Join the Slack community (#opentelemetry) for real-time help. Read "Learning OpenTelemetry" from O'Reilly for comprehensive understanding. Check vendor docs (Grafana, Datadog, New Relic) for integration guides.
+<tldr>Start with the official docs (opentelemetry.io) and the free CNCF course. Join the Slack community (#opentelemetry) for real-time help. Read "Learning OpenTelemetry" from O'Reilly for comprehensive understanding. Check vendor docs (Grafana, Datadog, New Relic) for integration guides.</tldr>
 
 ### Official Channels
 

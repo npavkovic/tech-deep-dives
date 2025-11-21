@@ -10,9 +10,13 @@
 
 # Apache Kafka: A Comprehensive Technical Explainer
 
+<deck>LinkedIn's social network was drowning in point-to-point integrations until they built Kafka—a distributed log that treats events as permanent history, not ephemeral messages. What emerged became the backbone of modern event streaming, powering everything from Netflix's recommendations to PayPal's trillion daily transactions.</deck>
+
+${toc}
+
 ## 1. The "What & Why" (Foundation)
 
-**TLDR**: Kafka is a distributed, append-only log platform for handling massive real-time event streams. Unlike traditional message queues that delete messages after consumption, Kafka keeps them for replay, enabling multiple independent consumers to process the same data at their own pace. It solved the pre-2011 problem of brittle point-to-point integrations and impossible event replay.
+<tldr>Kafka is a distributed, append-only log platform for handling massive real-time event streams. Unlike traditional message queues that delete messages after consumption, Kafka keeps them for replay, enabling multiple independent consumers to process the same data at their own pace. It solved the pre-2011 problem of brittle point-to-point integrations and impossible event replay.</tldr>
 
 ### One Clear Definition
 
@@ -56,7 +60,7 @@ The key architectural insight: **Kafka decouples producers from consumers**. Pro
 
 ## 2. Real-World Usage (Context First)
 
-**TLDR**: Kafka excels at high-throughput event distribution (millions of msgs/sec), durable storage with replay, and decoupling microservices. It's used by Netflix, Uber, LinkedIn for activity tracking, financial transactions, log aggregation, and stream processing. Not good for: database queries, request-response patterns, guaranteed low-latency to edge devices, or strict global ordering.
+<tldr>Kafka excels at high-throughput event distribution (millions of msgs/sec), durable storage with replay, and decoupling microservices. It's used by Netflix, Uber, LinkedIn for activity tracking, financial transactions, log aggregation, and stream processing. Not good for: database queries, request-response patterns, guaranteed low-latency to edge devices, or strict global ordering.</tldr>
 
 ### Most Common Patterns
 
@@ -135,7 +139,7 @@ Common scale patterns:
 
 ## 3. Comparisons & Alternatives
 
-**TLDR**: Kafka excels at throughput and replay, outperforming RabbitMQ at high scale. Pulsar offers better multi-tenancy and geo-replication. Managed options (Confluent Cloud, AWS MSK, Google Pub/Sub) trade cost for operational simplicity. Choose Kafka for high-throughput replay scenarios with strong expertise; choose managed services or RabbitMQ for simpler use cases.
+<tldr>Kafka excels at throughput and replay, outperforming RabbitMQ at high scale. Pulsar offers better multi-tenancy and geo-replication. Managed options (Confluent Cloud, AWS MSK, Google Pub/Sub) trade cost for operational simplicity. Choose Kafka for high-throughput replay scenarios with strong expertise; choose managed services or RabbitMQ for simpler use cases.</tldr>
 
 ### Head-to-Head Comparison Table
 
@@ -228,7 +232,7 @@ Apache Pulsar separates compute (brokers) from storage (BookKeeper), which offer
 
 ## 4. Quick Reference (Commands & Operations)
 
-**TLDR**: Essential Kafka commands for topic management, producing/consuming messages, monitoring consumer lag, and configuration. Key producer settings: acks, batching, compression. Key consumer settings: group.id, auto-commit, isolation level. Critical broker configs: replication factor, min.insync.replicas.
+<tldr>Essential Kafka commands for topic management, producing/consuming messages, monitoring consumer lag, and configuration. Key producer settings: acks, batching, compression. Key consumer settings: group.id, auto-commit, isolation level. Critical broker configs: replication factor, min.insync.replicas.</tldr>
 
 ### Essential Commands
 
@@ -447,7 +451,7 @@ public class KafkaConsumerExample {
 
 ## 5. Core Concepts Unpacked
 
-**TLDR**: Kafka's architecture centers on topics (logical channels), partitions (parallel ordered logs), brokers (servers), producers (senders), consumers (readers), and offsets (bookmarks). Messages within a partition maintain strict order via append-only logs. Consumer groups enable parallel processing. Replication via ISRs provides fault tolerance.
+<tldr>Kafka's architecture centers on topics (logical channels), partitions (parallel ordered logs), brokers (servers), producers (senders), consumers (readers), and offsets (bookmarks). Messages within a partition maintain strict order via append-only logs. Consumer groups enable parallel processing. Replication via ISRs provides fault tolerance.</tldr>
 
 ### Topics: The Address Book
 
@@ -553,7 +557,7 @@ Example: `replication_factor=3, min.insync.replicas=2`
 
 ## 6. How It Actually Works
 
-**TLDR**: Kafka's architecture uses a partitioned append-only log model. Producers batch and compress messages, brokers replicate to ISRs, consumers poll and commit offsets. Exactly-once semantics require idempotent producers, transactions, and read_committed isolation. The commit log design enables high throughput via sequential writes and OS page cache optimization.
+<tldr>Kafka's architecture uses a partitioned append-only log model. Producers batch and compress messages, brokers replicate to ISRs, consumers poll and commit offsets. Exactly-once semantics require idempotent producers, transactions, and read_committed isolation. The commit log design enables high throughput via sequential writes and OS page cache optimization.</tldr>
 
 ### Architecture Deep Dive
 
@@ -698,7 +702,7 @@ If crashes before commitSync, message is retried
 
 ## 7. Integration Patterns
 
-**TLDR**: Kafka integrates with databases via CDC (Debezium), microservices via event-driven architecture, stream processors (Flink/Spark) for real-time ETL, and data warehouses via Kafka Connect sink connectors. CQRS pattern uses Kafka to decouple write and read models. All patterns leverage Kafka's decoupling and replay capabilities.
+<tldr>Kafka integrates with databases via CDC (Debezium), microservices via event-driven architecture, stream processors (Flink/Spark) for real-time ETL, and data warehouses via Kafka Connect sink connectors. CQRS pattern uses Kafka to decouple write and read models. All patterns leverage Kafka's decoupling and replay capabilities.</tldr>
 
 ### Kafka + Databases (CDC: Change Data Capture)
 
@@ -787,7 +791,7 @@ UI request → Order Service (command)
 
 ## 8. Practical Considerations
 
-**TLDR**: Deployment options range from self-managed (maximum control, high ops burden) to SaaS (Confluent Cloud - expensive, zero ops). Kafka scales horizontally via partitions but has limits (100K+ partitions cause rebalancing slowdowns). Typical throughput: 100K-500K msgs/sec per broker. Costs vary: Confluent Cloud ~$300-500/month for 100K msgs/sec, AWS MSK ~$200-300/month, self-managed variable but requires FTE investment.
+<tldr>Deployment options range from self-managed (maximum control, high ops burden) to SaaS (Confluent Cloud - expensive, zero ops). Kafka scales horizontally via partitions but has limits (100K+ partitions cause rebalancing slowdowns). Typical throughput: 100K-500K msgs/sec per broker. Costs vary: Confluent Cloud ~$300-500/month for 100K msgs/sec, AWS MSK ~$200-300/month, self-managed variable but requires FTE investment.</tldr>
 
 ### Deployment Models
 
@@ -890,7 +894,7 @@ docker-compose up -d  # Spin up Kafka locally
 
 ## 9. Recent Advances & Trajectory
 
-**TLDR**: Major shifts in the last 24 months include KRaft (ZooKeeper removal, GA in Kafka 3.3), tiered storage for cost reduction, and Flink integration in Confluent Cloud. The project is healthy with quarterly releases and growing enterprise adoption. Competitive pressure from Pulsar and cloud-native alternatives is driving innovation. Watch for KRaft maturity and stream processing convergence.
+<tldr>Major shifts in the last 24 months include KRaft (ZooKeeper removal, GA in Kafka 3.3), tiered storage for cost reduction, and Flink integration in Confluent Cloud. The project is healthy with quarterly releases and growing enterprise adoption. Competitive pressure from Pulsar and cloud-native alternatives is driving innovation. Watch for KRaft maturity and stream processing convergence.</tldr>
 
 ### Major Features (Last 12-24 Months)
 
@@ -997,7 +1001,7 @@ docker-compose up -d  # Spin up Kafka locally
 
 ## 10. Free Tier Experiments
 
-**TLDR**: Three paths to hands-on Kafka: Confluent Cloud free tier ($400 credit, 30 days), AWS MSK Serverless (pay-as-you-go), or Docker Compose (local, free, instant). Start with Docker for learning basics, move to Confluent/MSK for production-like environments. 30-minute project: real-time activity stream with Python.
+<tldr>Three paths to hands-on Kafka: Confluent Cloud free tier ($400 credit, 30 days), AWS MSK Serverless (pay-as-you-go), or Docker Compose (local, free, instant). Start with Docker for learning basics, move to Confluent/MSK for production-like environments. 30-minute project: real-time activity stream with Python.</tldr>
 
 ### Option 1: Confluent Cloud Free Tier
 
@@ -1144,7 +1148,7 @@ for message in consumer:
 
 ## 11. Gotchas, Misconceptions & War Stories
 
-**TLDR**: Common mistakes include treating Kafka as a database (it's not queryable), creating too many partitions (slows rebalancing), assuming exactly-once is automatic (requires transactions + careful offset management), expecting global ordering (only within partitions), and misconfiguring timeouts (causes spurious failures). War stories: rebalancing cascades, duplicate transactions, slow consumer spirals, ZooKeeper split-brain.
+<tldr>Common mistakes include treating Kafka as a database (it's not queryable), creating too many partitions (slows rebalancing), assuming exactly-once is automatic (requires transactions + careful offset management), expecting global ordering (only within partitions), and misconfiguring timeouts (causes spurious failures). War stories: rebalancing cascades, duplicate transactions, slow consumer spirals, ZooKeeper split-brain.</tldr>
 
 ### Misconception #1: "Kafka is a Database"
 
@@ -1256,7 +1260,7 @@ for message in consumer:
 
 ## 12. How to Learn More
 
-**TLDR**: Start with Confluent Developer Hub (free tutorials) or Udemy's "Apache Kafka Series" by Stéphane Maarek (~$15). Read "Kafka: The Definitive Guide" (O'Reilly) for depth. Join Confluent Slack community for questions. Build a real project (activity stream, log aggregation, ETL pipeline) for hands-on experience. Watch Kafka Summit videos on YouTube for advanced topics.
+<tldr>Start with Confluent Developer Hub (free tutorials) or Udemy's "Apache Kafka Series" by Stéphane Maarek (~$15). Read "Kafka: The Definitive Guide" (O'Reilly) for depth. Join Confluent Slack community for questions. Build a real project (activity stream, log aggregation, ETL pipeline) for hands-on experience. Watch Kafka Summit videos on YouTube for advanced topics.</tldr>
 
 ### Official Resources
 
