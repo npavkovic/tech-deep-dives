@@ -1,0 +1,28 @@
+---
+layout: layout.njk
+title: Home
+---
+
+<ul class="guide-list">
+  {%- for guide in collections.guides %}
+  <li class="guide-item">
+    <h2 class="guide-title">
+      <a href="{{ guide.url }}">{{ guide.data.title }}</a>
+    </h2>
+    <div class="guide-meta">
+      <time datetime="{{ guide.date | dateToRfc3339 }}">
+        {{ guide.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
+      </time>
+    </div>
+    {% if guide.data.audio %}
+    <div class="audio-player">
+      <h3>Listen to this guide</h3>
+      <audio controls preload="metadata">
+        <source src="/audio/{{ guide.data.audio }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    {% endif %}
+  </li>
+  {%- endfor %}
+</ul>

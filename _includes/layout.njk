@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}{{ title }} | {% endif %}Tech Deep Dives</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="alternate" type="application/rss+xml" title="Tech Deep Dives Podcast" href="/feed.xml">
+</head>
+<body>
+  <nav>
+    <a href="/" class="site-title">Tech Deep Dives</a>
+    <a href="/feed.xml" class="feed-link">Podcast Feed</a>
+  </nav>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <p>Technical guides with audio versions. Subscribe to the <a href="/feed.xml">podcast feed</a>.</p>
+  </footer>
+</body>
+</html>

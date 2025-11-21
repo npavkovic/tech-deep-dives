@@ -1,0 +1,33 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tech Deep Dives</title>
+    <description>In-depth technical guides in podcast form</description>
+    <link>{{ metadata.url or "https://tech-deep-dives.netlify.app" }}</link>
+    <atom:link href="{{ metadata.url or 'https://tech-deep-dives.netlify.app' }}/feed.xml" rel="self" type="application/rss+xml"/>
+    <language>en</language>
+    <itunes:author>Tech Deep Dives</itunes:author>
+    <itunes:summary>In-depth technical guides in podcast form</itunes:summary>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:category text="Technology"/>
+
+    {%- for guide in collections.guides %}
+    {%- if guide.data.audio %}
+    <item>
+      <title>{{ guide.data.title }}</title>
+      <link>{{ metadata.url or "https://tech-deep-dives.netlify.app" }}{{ guide.url }}</link>
+      <guid>{{ metadata.url or "https://tech-deep-dives.netlify.app" }}{{ guide.url }}</guid>
+      <pubDate>{{ guide.date | dateToRfc822 }}</pubDate>
+      <description>{{ guide.data.description or guide.data.title }}</description>
+      <enclosure url="{{ metadata.url or 'https://tech-deep-dives.netlify.app' }}/audio/{{ guide.data.audio }}" type="audio/mpeg" length="0"/>
+      <itunes:duration>0</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    {%- endif %}
+    {%- endfor %}
+  </channel>
+</rss>

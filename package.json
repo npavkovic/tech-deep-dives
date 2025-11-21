@@ -1,0 +1,14 @@
+{
+  "name": "tech-deep-dives",
+  "version": "1.0.0",
+  "description": "Technical deep dive guides with podcast versions",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "start": "eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-plugin-rss": "^1.2.0"
+  }
+}

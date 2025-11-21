@@ -1,0 +1,25 @@
+---
+layout: layout.njk
+---
+
+<article>
+  <h1>{{ title }}</h1>
+
+  <div class="guide-meta">
+    <time datetime="{{ date | dateToRfc3339 }}">
+      {{ date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
+    </time>
+  </div>
+
+  {% if audio %}
+  <div class="audio-player">
+    <h3>Listen to this guide</h3>
+    <audio controls preload="metadata">
+      <source src="/audio/{{ audio }}" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+  {% endif %}
+
+  {{ content | safe }}
+</article>
