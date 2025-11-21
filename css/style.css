@@ -189,6 +189,14 @@ a:hover {
   margin-bottom: 1rem;
 }
 
+.guide-description {
+  font-family: var(--article-font);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
 /* Audio Player */
 .audio-player {
   margin: 2rem 0;

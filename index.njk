@@ -14,6 +14,9 @@ title: Home
         {{ guide.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) }}
       </time>
     </div>
+    {% if guide.data.description %}
+    <p class="guide-description">{{ guide.data.description }}</p>
+    {% endif %}
     {% if guide.data.audio %}
     <div class="audio-player">
       <h3>Listen to this guide</h3>

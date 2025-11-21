@@ -18,10 +18,44 @@ npm run build # Build for production
 
 ## Adding New Content
 
-### 1. Prepare Your Guide
+### Automated (Recommended)
 
-Take your `-edited.md` file and add frontmatter at the top:
+Use the script to auto-generate frontmatter and copy files:
 
+```bash
+# With audio
+python scripts/add-guide.py path/to/redis-edited.md --audio path/to/redis.mp3
+
+# Without audio (audio can be added later)
+python scripts/add-guide.py path/to/redis-edited.md
+
+# Custom date and metadata
+python scripts/add-guide.py path/to/redis-edited.md \
+  --audio path/to/redis.mp3 \
+  --date 2025-01-20 \
+  --title "Custom Title" \
+  --description "Custom description"
+```
+
+The script will:
+- Extract title from the first H1 heading
+- Auto-generate a description from the first paragraph
+- Generate frontmatter with all metadata
+- Copy files to the correct locations
+- Show you the git commands to run
+
+Then just:
+```bash
+git add guides/ audio/
+git commit -m "Add Redis guide"
+git push
+```
+
+### Manual
+
+If you prefer to do it manually:
+
+1. Add frontmatter to your `-edited.md`:
 ```yaml
 ---
 layout: guide.njk
@@ -30,29 +64,18 @@ date: 2025-01-20
 audio: redis.mp3
 description: "A comprehensive guide to Redis"
 ---
-
-[Your existing content here]
 ```
 
-### 2. Add Files
-
+2. Copy files:
 ```bash
-# Copy guide
-cp path/to/redis-edited.md guides/redis.md
-
-# Copy podcast audio from NotebookLM
-cp path/to/redis-podcast.mp3 audio/redis.mp3
+cp redis-edited.md guides/redis.md
+cp redis.mp3 audio/
 ```
 
-### 3. Deploy
-
+3. Push:
 ```bash
-git add .
-git commit -m "Add Redis guide"
-git push
+git add . && git commit -m "Add Redis guide" && git push
 ```
-
-Netlify auto-builds and deploys.
 
 ## Customizing Design
 
